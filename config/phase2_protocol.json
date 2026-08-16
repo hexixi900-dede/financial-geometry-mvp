@@ -1,0 +1,47 @@
+{
+  "bar_scope": {
+    "allowed": "simple vertical bar, single fitted left y-axis",
+    "bar_count_max": 30,
+    "bar_count_min": 2,
+    "minimum_x_label_coverage": 0.7,
+    "prefilter_sloped_segments_max": 1,
+    "reject_multiple_circle_or_internal_marker_series": true,
+    "reject_multiple_time_categories_assigned_to_one_bar": true,
+    "reject_non_axis_numeric_plot_tokens": true,
+    "reject_right_or_additional_y_axis": true
+  },
+  "bootstrap": {
+    "cluster": "chart_id",
+    "iterations": 10000,
+    "seed": 20260816
+  },
+  "calibration": {
+    "source": "frozen Phase 1 huber-ridge error calibrator",
+    "training_in_phase2": false
+  },
+  "gold_isolation": {
+    "geometry_gold_access": false,
+    "hidden_value_label_bbox_access": false,
+    "manual_target_coordinate_access": false,
+    "targeting_gold_access": false
+  },
+  "raw_vlm": {
+    "model": "Qwen2.5-VL-7B-Instruct",
+    "reuse_existing_complete_predictions": true,
+    "variant": "direct image plus original question/options/unit"
+  },
+  "semantic_targeting": {
+    "ambiguous_direct_target_margin": 0.06,
+    "minimum_question_label_match": 0.78,
+    "supported_operations": [
+      "direct",
+      "difference",
+      "growth_rate"
+    ]
+  },
+  "subset": {
+    "maximum_samples": 50,
+    "one_question_per_chart": true,
+    "split": "phase2_natural_no_label_external_test"
+  }
+}

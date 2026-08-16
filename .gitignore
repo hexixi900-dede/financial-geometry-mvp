@@ -36,6 +36,8 @@ __pycache__/
 # Full experiment artifacts retained locally but not published
 /masked_images/
 /debug_overlays/
+/phase2_debug_overlays/
+/phase2_audit/
 /logs/
 /src_sync_tmp/
 /audit/*

@@ -1,0 +1,10 @@
+scope,method,n,chart_count,correct,accuracy,numerical_n,numerical_parseable_n,numerical_mae,numerical_median_absolute_error
+all,raw_vlm,1,1,0,0.0,1,1,18999975.0,18999975.0
+all,raw_geometry,1,1,0,0.0,1,1,5.13499235440867,5.13499235440867
+all,calibrated_geometry,1,1,0,0.0,1,1,5.136914170396004,5.136914170396004
+operation:difference,raw_vlm,1,1,0,0.0,1,1,18999975.0,18999975.0
+operation:difference,raw_geometry,1,1,0,0.0,1,1,5.13499235440867,5.13499235440867
+operation:difference,calibrated_geometry,1,1,0,0.0,1,1,5.136914170396004,5.136914170396004
+type:numerical,raw_vlm,1,1,0,0.0,1,1,18999975.0,18999975.0
+type:numerical,raw_geometry,1,1,0,0.0,1,1,5.13499235440867,5.13499235440867
+type:numerical,calibrated_geometry,1,1,0,0.0,1,1,5.136914170396004,5.136914170396004

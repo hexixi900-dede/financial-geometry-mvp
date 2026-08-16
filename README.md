@@ -12,6 +12,20 @@ CPU-only minimum validation of calibrated geometry reasoning on existing FinMME 
 
 The checked-in CSV files and report are frozen experiment outputs. Repository preparation did not rerun the experiment or change those files.
 
+## Phase 2: natural no-label Bar QA
+
+Phase 2 is an independent held-out diagnostic on charts that naturally omit data-value labels. It tests the complete path `Question → semantic target → detected x label/bar → y-axis geometry → answer` against an existing Qwen2.5-VL-7B Direct baseline. It does not modify or retrain the Phase 1 geometry/calibration experiment.
+
+The strict FinMME screen evaluated 99 candidates but retained only one clean question/chart, so the comparison is inconclusive and must not be presented as evidence that Geometry beats Raw VLM. All three systems are officially 0/1; post-prediction visual audit flags a likely mismatch between the only chart and its released Gold. The full rejection accounting is retained rather than padding the subset.
+
+- `PHASE2_REPORT.md`: separate Geometry and Calibration verdicts, uncertainty, screening counts, and Material Passport.
+- `src/phase2_natural_bar.py`: CPU OCR, all-bar detection, automatic semantic targeting, geometry, frozen calibration, and Python QA.
+- `src/evaluate_phase2.py`: official tolerance/choice scoring, chart-cluster bootstrap, exact paired comparison, and report generation.
+- `results/phase2_*.csv`: sample, screening, split, metric, paired-comparison, and failure-attribution tables.
+- `examples/phase2_debug_overlays/`: 40 representative accepted/rejected overlays and their selection manifest.
+
+The Phase 2 targeting and Geometry stages never receive Gold, tolerance, hidden value-label boxes, or manual target coordinates. Gold is joined only after predictions exist. Existing complete Raw VLM predictions are reused by SHA-256, so Phase 2 does not require a new GPU run.
+
 ## Fixed scope
 
 - Simple, single-y-axis vertical Bar and Line charts only.
@@ -39,6 +53,12 @@ set -a
 source .env
 set +a
 bash scripts/run_cpu_pipeline.sh
+```
+
+For the Phase 2 CPU path, point `RAW_VLM_PATH` at an existing complete direct-baseline JSONL (or use the default under `FINMME_ROOT`) and run:
+
+```bash
+bash scripts/run_phase2_cpu.sh
 ```
 
 Required setting:

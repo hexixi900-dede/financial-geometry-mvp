@@ -1,0 +1,4 @@
+comparison,n,accuracy_delta,bootstrap_ci95_low,bootstrap_ci95_high,bootstrap_improvement_probability,bootstrap_iterations,bootstrap_cluster,first_only_correct,second_only_correct,discordant_pairs,mcnemar_exact_two_sided_p
+raw_geometry_minus_raw_vlm,1,0.0,0.0,0.0,0.0,10000,chart_id,0,0,0,1.0
+calibrated_geometry_minus_raw_vlm,1,0.0,0.0,0.0,0.0,10000,chart_id,0,0,0,1.0
+calibrated_minus_raw_geometry,1,0.0,0.0,0.0,0.0,10000,chart_id,0,0,0,1.0

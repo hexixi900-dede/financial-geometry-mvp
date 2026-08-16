@@ -1,0 +1,21 @@
+{
+  "accepted_sample_reviews": {
+    "9346": {
+      "all_target_bars_detected": true,
+      "geometry_visually_consistent": true,
+      "manual_failure_attribution": "possible_official_gold_chart_mismatch",
+      "manual_no_direct_value_label": true,
+      "manual_reasoning_correct": true,
+      "manual_simple_single_axis_bar": true,
+      "manual_target_correct": true,
+      "notes": "The visible bar tops interpolate to approximately 11.7 (2022) and 31.6 (2024F), so the deterministic difference is approximately 19.9. The official Gold is 25 with tolerance 2, which is not visually supported by these bars. Official scoring remains unchanged."
+    }
+  },
+  "review_method": "Four contact sheets covering all 40 representative overlays were visually inspected after automatic predictions were frozen.",
+  "reviewed_overlay_count": 40,
+  "screening_overlay_review": {
+    "accepted_overlays_reviewed": 1,
+    "rejected_overlays_reviewed": 39,
+    "representative_rejection_decisions_visually_supported": true
+  }
+}
