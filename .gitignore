@@ -38,6 +38,9 @@ __pycache__/
 /debug_overlays/
 /phase2_debug_overlays/
 /phase2_audit/
+/phase3_debug_overlays/
+/phase3_masked_images/
+/phase3_audit/
 /logs/
 /src_sync_tmp/
 /audit/*

@@ -1,0 +1,10 @@
+{
+  "artifact_count_after": 121,
+  "artifact_count_before": 121,
+  "classification": "deterministic_cpu_pipeline",
+  "exact_hash_match": true,
+  "extra": [],
+  "mismatched": [],
+  "missing": [],
+  "verdict": "REPRODUCIBLE"
+}

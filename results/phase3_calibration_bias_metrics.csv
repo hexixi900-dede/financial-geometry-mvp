@@ -1,0 +1,7 @@
+method,evaluation_scope,eligible_samples,eligible_charts,mae,median_absolute_error,mean_axis_normalized_error
+raw_auto_x_local,phase3 charts unseen to Phase1 calibrator train,4,3,0.21555790049978896,0.21897524165588678,0.004000748180137915
+global_mean_constant_bias_phase1_train,phase3 charts unseen to Phase1 calibrator train,4,3,0.4470100410076441,0.44359269985154626,0.01914038894231996
+line_type_mean_constant_bias_phase1_train,phase3 charts unseen to Phase1 calibrator train,4,3,0.7629612162887387,0.7595438751326427,0.030175437596420107
+global_median_constant_bias_phase1_train,phase3 charts unseen to Phase1 calibrator train,4,3,0.12186816413032187,0.10612656431030132,0.002166419805644473
+line_type_median_constant_bias_phase1_train,phase3 charts unseen to Phase1 calibrator train,4,3,0.15129713292386793,0.147879791767771,0.008812190841943382
+learned_phase1_calibrator,phase3 charts unseen to Phase1 calibrator train,4,3,0.16078769826984995,0.16581810484561643,0.002388057680171462

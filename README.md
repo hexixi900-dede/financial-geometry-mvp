@@ -26,6 +26,23 @@ The strict FinMME screen evaluated 99 candidates but retained only one clean que
 
 The Phase 2 targeting and Geometry stages never receive Gold, tolerance, hidden value-label boxes, or manual target coordinates. Gold is joined only after predictions exist. Existing complete Raw VLM predictions are reused by SHA-256, so Phase 2 does not require a new GPU run.
 
+## Phase 3: Line x-axis grounding and 2D geometry
+
+Phase 3 is an isolated CPU experiment on strict, simple, single-series, single-y-axis Line charts. It masks only explicit data-value text while protecting the detected line pixels, then compares the historical value-label-center proxy (`Oracle-X`) with two no-leak automatic paths:
+
+1. `Question → OCR x-axis anchor → target_x → narrow-column point → y-axis value`
+2. `Question → OCR x-axis anchor/interpolation → target_x ± window → robust local line fit → y-axis value`
+
+The automatic parser accepts only the masked chart and question. Pseudo-Gold, the masked label box, and its center x remain in a construction-only audit namespace. Rotated x-band OCR handles vertical years/months; unbracketed targets return `x_grounding_unrecoverable` instead of extrapolating.
+
+The strict result contains 17 labels from 8 charts (13 direct anchors, 4 piecewise interpolations) and 51 full local overlays. The repository publishes 40 representative overlays while excluding the masked-image corpus and full overlay directory. See `PHASE3_LINE_2D_REPORT.md` for metrics, failure attribution, calibration/bias controls, uncertainty, and the multi-line decision.
+
+- `src/phase3_line_core.py`: semantic x grounding, rotated OCR, dominant-series extraction, column read, and robust local fit.
+- `src/run_phase3_line_2d.py`: resumable scan, construction, no-leak execution, paired metrics, and calibration/bias controls.
+- `src/validate_phase3.py`: frozen Phase 1/2 checks, no-leak AST check, split/output integrity, and metric recomputation.
+- `results/phase3_*.csv`: screening, sample audit, chart split, metrics, pairwise bootstrap, local-fit effects, calibration, and failures.
+- `examples/phase3_debug_overlays/`: 40 representative Oracle/column/local overlays plus selection manifest.
+
 ## Fixed scope
 
 - Simple, single-y-axis vertical Bar and Line charts only.
@@ -61,6 +78,28 @@ For the Phase 2 CPU path, point `RAW_VLM_PATH` at an existing complete direct-ba
 bash scripts/run_phase2_cpu.sh
 ```
 
+Phase 3 uses explicit CLI arguments so it has no server-specific path dependency:
+
+```bash
+export PYTHONPATH="$PWD/src"
+export CUDA_VISIBLE_DEVICES=""
+python src/run_phase3_line_2d.py \
+  --project . \
+  --manifest results/finmme_chart_manifest.csv \
+  --candidate-scan audit/candidate_scan_v3.jsonl \
+  --chart-decisions config/phase3_line_chart_decisions.csv \
+  --model-dir /path/to/easyocr/models \
+  --stage construct
+python src/run_phase3_line_2d.py \
+  --project . \
+  --manifest results/finmme_chart_manifest.csv \
+  --candidate-scan audit/candidate_scan_v3.jsonl \
+  --chart-decisions config/phase3_line_chart_decisions.csv \
+  --model-dir /path/to/easyocr/models \
+  --stage analyze
+python src/validate_phase3.py --project .
+```
+
 Required setting:
 
 - `FINMME_ROOT`: an existing FinMME reproduction workspace.
@@ -75,6 +114,6 @@ Original OCR text and numeric pseudo-Gold are used only to construct and audit t
 
 ## Data and publication policy
 
-The repository excludes the complete FinMME dataset, source JPEG cache, OCR/model weights, all masked images, the full overlay corpus, logs, temporary scans, archives, and local environment files. The 40 published overlays are a stratified audit subset; their selection is recorded in `examples/debug_overlays/selection_manifest.csv`.
+The repository excludes the complete FinMME dataset, source JPEG cache, OCR/model weights, all masked images, the full overlay corpora, logs, temporary scans, archives, and local environment files. Phase 1 and Phase 3 each publish 40 audit overlays; their selections are recorded in the corresponding `examples/*debug_overlays/selection_manifest.csv` files.
 
 FinMME and ChartAgent remain governed by their own upstream terms. The Geometry implementation here is an independent CPU subset based on the ChartAgent paper appendix's behavioral descriptions; no author repository or function-body source was available or copied. See `audit/chartagent_method_notes.md`.

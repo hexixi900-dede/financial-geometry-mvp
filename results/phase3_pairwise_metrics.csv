@@ -1,0 +1,4 @@
+comparison,paired_samples,paired_charts,left_mae_minus_right_mae,ci95_low,ci95_high,probability_left_error_gt_right,iterations
+auto_x_column_minus_oracle_x,16,8,-1.2816518618191406,-1.8437180393328296,-0.38261911778600116,0.0,3000
+auto_x_local_minus_oracle_x,17,8,-1.3876969371850676,-1.949403744430517,-0.42895054395768084,0.0,3000
+auto_x_column_minus_auto_x_local,16,8,0.03338140862852097,-0.018653638026308598,0.09482416685296567,0.8966666666666666,3000

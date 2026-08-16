@@ -1,0 +1,18 @@
+sample_id,target_grounding_correct,series_match_correct,line_fit_assessment,y_axis_mapping_assessment,review_note,review_basis
+phase3_line_0001,1,1,acceptable,pass,local fit recovers a point where the narrow column has no pixel,all auto-local overlays reviewed
+phase3_line_0002,1,1,acceptable,pass,minor thick-line center offset,all auto-local overlays reviewed
+phase3_line_0003,1,1,acceptable,pass,right endpoint recovered from rotated date anchor,all auto-local overlays reviewed
+phase3_line_0004,1,1,good,pass,direct quarter anchor and line point agree,all auto-local overlays reviewed
+phase3_line_0005,1,1,good,pass,direct quarter anchor and line point agree,all auto-local overlays reviewed
+phase3_line_0006,1,1,good,pass,interpolated quarter lands on intended segment,all auto-local overlays reviewed
+phase3_line_0007,1,1,good,pass,interpolated quarter lands on local peak,all auto-local overlays reviewed
+phase3_line_0008,1,1,good,pass,interpolated quarter lands on descending segment,all auto-local overlays reviewed
+phase3_line_0009,1,1,good,pass,direct quarter anchor lands near zero crossing,all auto-local overlays reviewed
+phase3_line_0010,1,1,endpoint_underfit,pass,one-sided fit at final endpoint underestimates relative to narrow-column read,all auto-local overlays reviewed
+phase3_line_0011,1,1,good,pass,left endpoint is accurately recovered,all auto-local overlays reviewed
+phase3_line_0012,1,1,endpoint_underfit,pass,right endpoint local extrapolation remains low but improves over narrow column,all auto-local overlays reviewed
+phase3_line_0013,1,1,good,pass,direct fiscal-year anchor and line point agree,all auto-local overlays reviewed
+phase3_line_0014,1,1,good,pass,interpolated fiscal year lands between displayed two-year ticks,all auto-local overlays reviewed
+phase3_line_0015,1,1,acceptable,pass,local fit near a short sloped segment has a small center offset,all auto-local overlays reviewed
+phase3_line_0016,1,1,good,pass,direct year anchor and line point agree,all auto-local overlays reviewed
+phase3_line_0017,1,1,good,pass,rotated month OCR selects the intended local trough,all auto-local overlays reviewed

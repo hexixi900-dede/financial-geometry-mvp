@@ -1,0 +1,141 @@
+{
+  "calibration_metrics": [
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.21555790049978896,
+      "mean_axis_normalized_error": 0.004000748180137915,
+      "median_absolute_error": 0.21897524165588678,
+      "method": "raw_auto_x_local"
+    },
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.4470100410076441,
+      "mean_axis_normalized_error": 0.01914038894231996,
+      "median_absolute_error": 0.44359269985154626,
+      "method": "global_mean_constant_bias_phase1_train"
+    },
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.7629612162887387,
+      "mean_axis_normalized_error": 0.030175437596420107,
+      "median_absolute_error": 0.7595438751326427,
+      "method": "line_type_mean_constant_bias_phase1_train"
+    },
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.12186816413032187,
+      "mean_axis_normalized_error": 0.002166419805644473,
+      "median_absolute_error": 0.10612656431030132,
+      "method": "global_median_constant_bias_phase1_train"
+    },
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.15129713292386793,
+      "mean_axis_normalized_error": 0.008812190841943382,
+      "median_absolute_error": 0.147879791767771,
+      "method": "line_type_median_constant_bias_phase1_train"
+    },
+    {
+      "eligible_charts": 3,
+      "eligible_samples": 4,
+      "evaluation_scope": "phase3 charts unseen to Phase1 calibrator train",
+      "mae": 0.16078769826984995,
+      "mean_axis_normalized_error": 0.002388057680171462,
+      "median_absolute_error": 0.16581810484561643,
+      "method": "learned_phase1_calibrator"
+    }
+  ],
+  "chart_count": 8,
+  "direct_grounding_samples": 13,
+  "failure_attribution": {
+    "line_fitting": 2,
+    "within_expected_error": 15
+  },
+  "interpolated_grounding_samples": 4,
+  "local_fitting_effect_counts": {
+    "improved": 8,
+    "recovered_missing_column_point": 1,
+    "worsened": 8
+  },
+  "method_metrics": [
+    {
+      "coverage": 1.0,
+      "eligible_samples": 17,
+      "large_error_count_axis_gt_0_02": 9,
+      "mae": 1.5624342363674817,
+      "mean_axis_normalized_error": 0.04329620944969413,
+      "median_absolute_error": 1.2149470737774521,
+      "median_axis_normalized_error": 0.03922061532214941,
+      "method": "oracle_x_old_phase1_local_fit",
+      "total_samples": 17
+    },
+    {
+      "coverage": 0.9411764705882353,
+      "eligible_samples": 16,
+      "large_error_count_axis_gt_0_02": 0,
+      "mae": 0.1909627988227944,
+      "mean_axis_normalized_error": 0.005135064768666376,
+      "median_absolute_error": 0.13075321733218992,
+      "median_axis_normalized_error": 0.003124120876092022,
+      "method": "auto_x_column",
+      "total_samples": 17
+    },
+    {
+      "coverage": 1.0,
+      "eligible_samples": 17,
+      "large_error_count_axis_gt_0_02": 0,
+      "mae": 0.17473729918241382,
+      "mean_axis_normalized_error": 0.005004125442921269,
+      "median_absolute_error": 0.0745307953933505,
+      "median_axis_normalized_error": 0.0018189691520577023,
+      "method": "auto_x_local_line_fit",
+      "total_samples": 17
+    }
+  ],
+  "overlay_count": 51,
+  "pairwise": [
+    {
+      "ci95_high": -0.38261911778600116,
+      "ci95_low": -1.8437180393328296,
+      "comparison": "auto_x_column_minus_oracle_x",
+      "iterations": 3000,
+      "left_mae_minus_right_mae": -1.2816518618191406,
+      "paired_charts": 8,
+      "paired_samples": 16,
+      "probability_left_error_gt_right": 0.0
+    },
+    {
+      "ci95_high": -0.42895054395768084,
+      "ci95_low": -1.949403744430517,
+      "comparison": "auto_x_local_minus_oracle_x",
+      "iterations": 3000,
+      "left_mae_minus_right_mae": -1.3876969371850676,
+      "paired_charts": 8,
+      "paired_samples": 17,
+      "probability_left_error_gt_right": 0.0
+    },
+    {
+      "ci95_high": 0.09482416685296567,
+      "ci95_low": -0.018653638026308598,
+      "comparison": "auto_x_column_minus_auto_x_local",
+      "iterations": 3000,
+      "left_mae_minus_right_mae": 0.03338140862852097,
+      "paired_charts": 8,
+      "paired_samples": 16,
+      "probability_left_error_gt_right": 0.8966666666666666
+    }
+  ],
+  "sample_count": 17,
+  "train_test_chart_overlap": 0,
+  "x_grounding_unrecoverable_samples": 0
+}

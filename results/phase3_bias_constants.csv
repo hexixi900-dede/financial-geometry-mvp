@@ -1,0 +1,7 @@
+constant,value,training_source
+global_mean_bias,0.6625679415074337,frozen Phase1 train charts
+line_type_mean_bias,0.9785191167885272,frozen Phase1 train charts
+global_median_bias,0.11284867734558546,frozen Phase1 train charts
+line_type_median_bias,0.3668550334236578,frozen Phase1 train charts
+phase1_train_samples,65.0,frozen Phase1 train charts
+phase1_train_line_samples,11.0,frozen Phase1 train charts

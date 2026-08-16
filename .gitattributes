@@ -3,3 +3,8 @@ results/*.csv -text
 
 # Images are immutable audit artifacts.
 examples/debug_overlays/*.png binary
+
+# Phase 3 publication tables are normalized in Git without changing local experiment bytes.
+results/phase3_*.csv text eol=lf
+config/phase3_*.csv text eol=lf
+examples/phase3_debug_overlays/*.csv text eol=lf
