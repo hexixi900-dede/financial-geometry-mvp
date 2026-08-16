@@ -1,0 +1,39 @@
+experiment:
+  name: financial_geometry_mvp_v1
+  status: frozen
+  seed: 20260816
+  cpu_only: true
+  chart_types: [bar, line]
+  single_y_axis_only: true
+  accepted_samples: 87
+  bar_samples: 72
+  line_samples: 15
+
+split:
+  unit: chart_id
+  train_charts: 65
+  test_charts: 22
+  chart_overlap: 0
+  test_fraction_requested: 0.25
+
+geometry:
+  axis_localization: linear_tick_fit
+  pixel_to_value: linear_interpolation
+  bar_recovery: connected_component_bar_top
+  line_recovery: local_edge_point_fit
+  gold_available_to_geometry: false
+
+calibration:
+  target: (pseudo_gold - raw_geometry_value) / axis_span
+  model: huber_ridge_error_calibrator
+  grouped_cv_folds: 5
+  best_alpha: 1000.0
+  best_huber_delta: 0.0025
+  bootstrap_iterations: 5000
+
+publication:
+  representative_overlay_count: 40
+  include_full_dataset: false
+  include_models: false
+  include_masked_images: false
+  include_full_overlay_corpus: false

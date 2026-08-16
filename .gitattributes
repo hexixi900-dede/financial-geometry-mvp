@@ -1,0 +1,5 @@
+# Preserve the exact frozen CSV bytes; the experiment emitted CRLF records.
+results/*.csv -text
+
+# Images are immutable audit artifacts.
+examples/debug_overlays/*.png binary

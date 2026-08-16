@@ -1,0 +1,54 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Python and editor state
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.venv_*/
+.DS_Store
+.idea/
+.vscode/
+
+# External datasets, models, and caches
+/data/
+/datasets/
+/models/
+/cache/
+/.cache/
+/.ocr_models/
+**/*.arrow
+**/*.parquet
+**/*.safetensors
+**/*.ckpt
+**/*.pth
+**/*.pt
+
+# Full experiment artifacts retained locally but not published
+/masked_images/
+/debug_overlays/
+/logs/
+/src_sync_tmp/
+/audit/*
+!/audit/frozen_results.sha256
+!/audit/chartagent_method_notes.md
+/results/finmme_chart_manifest.csv
+/results/financial_geometry_mvp_code.tar.gz
+
+# Scratch/archive outputs
+*.jsonl
+*.log
+*.tmp
+*.bak
+*.tar
+*.tar.gz
+*.zip

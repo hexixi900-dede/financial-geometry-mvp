@@ -1,0 +1,10 @@
+field,rows,missing_or_empty,usable,notes
+sample_id,11099,0,True,
+image_path,11099,0,True,existing preprocessed JPEG cache; no re-download required
+question,11099,0,True,
+question_type,11099,0,True,numerical is the released Calculation category
+reference,11099,2,True,FinMME Gold; numerical rows contain a numeric string
+unit,11099,9290,True,
+tolerance,11099,9248,True,absolute tolerance; only meaningful for numerical rows
+verified_caption,11099,0,True,
+related_sentences,11099,15,True,

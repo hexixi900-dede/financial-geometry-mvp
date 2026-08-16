@@ -1,0 +1,8 @@
+datasets==4.8.4
+easyocr==1.7.2
+numpy==2.2.6
+opencv-python-headless==5.0.0.20260116
+pandas==2.2.3
+Pillow==12.1.1
+scipy==1.15.3
+torch
