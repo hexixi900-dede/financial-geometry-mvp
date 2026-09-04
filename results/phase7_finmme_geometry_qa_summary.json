@@ -1,0 +1,10 @@
+{
+  "failure_stages": {
+    "answered_but_wrong": 37,
+    "bar_chart_analysis": 46,
+    "semantic_targeting": 2,
+    "x_grounding_or_line_fit": 70
+  },
+  "routed_questions": 167,
+  "runtime_success": 49
+}

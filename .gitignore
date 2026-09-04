@@ -57,6 +57,7 @@ __pycache__/
 /phase5_finmme_scale/
 /phase5_finmme_natural/
 /phase6_geometry_scale/
+/phase7_finmme_geometry_qa/
 
 # Scratch/archive outputs
 *.jsonl
