@@ -1,0 +1,23 @@
+sample_id,evaluation_tier,geometry_status,manual_chart_audit,primary_failure_stage,use_for_clean_quantitative_claim,note
+4180,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,year-only endpoint has no reliable bracketing OCR anchors
+8336,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,January endpoints have no reliable bracketing OCR anchors
+6517,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,July-2021 and January-2024 endpoints are outside reliable OCR anchors
+8529,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,one or both requested endpoints lack bracketing OCR anchors
+3864,primary_clean,success,valid_single_line,gold_or_approximation_alignment,no,direct x match and visible line read about 32-34 versus Gold 40
+3098,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,one or both requested endpoints lack bracketing OCR anchors
+9007,primary_clean,success,valid_single_line,gold_or_question_alignment,no,visible line difference is about 1-2 while Gold is 15
+1703,primary_clean,success,valid_single_line,gold_alignment,no,Geometry 237.7 and Raw VLM 240 agree with the visible line while Gold is 30
+8245,primary_clean,success,scatter_not_line,structure_screening,no,line detector selected plot-border-like pixels rather than the scatter markers
+1797,primary_clean,success,single_line_with_unmarked_steep_segment,target_definition,no,3QFY24 lies on a steep unmarked segment and recovered difference 5.79 conflicts with Gold 1
+2814,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested endpoints lack reliable bracketing OCR anchors
+2330,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+2683,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+7190,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested endpoints lack reliable bracketing OCR anchors
+1286,primary_clean,success,multi_line_chart,structure_and_series_screening,no,three PMI series are visible but the scan reported one line and selected a non-target component
+1511,primary_clean,success,area_chart,structure_screening,no,filled area was misclassified as a line and the recovered point follows the lower boundary
+6789,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+9466,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+6941,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+1522,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+10535,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors
+10271,exploratory_annotated,geometry_failed,annotated_stock_chart,x_grounding,no,requested first and last dates are outside reliable OCR anchors

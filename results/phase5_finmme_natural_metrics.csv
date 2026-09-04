@@ -1,0 +1,13 @@
+scope,method,samples,covered,coverage,accuracy,conditional_accuracy,mae,median_absolute_error
+all,raw_vlm,22,22,1.0,0.045454545454545456,0.045454545454545456,278.2877272727273,29.75
+all,geometry_column,22,7,0.3181818181818182,0.0,0.0,39.25353094682961,7.5
+all,geometry_local,22,7,0.3181818181818182,0.0,0.0,40.59899319920212,13.840680996344421
+all,geometry_calibrated,22,7,0.3181818181818182,0.0,0.0,39.639959079708945,7.472065516084001
+primary_clean,raw_vlm,7,7,1.0,0.0,0.0,41.29,16.0
+primary_clean,geometry_column,7,7,1.0,0.0,0.0,39.25353094682961,7.5
+primary_clean,geometry_local,7,7,1.0,0.0,0.0,40.59899319920212,13.840680996344421
+primary_clean,geometry_calibrated,7,7,1.0,0.0,0.0,39.639959079708945,7.472065516084001
+exploratory_annotated,raw_vlm,15,15,1.0,0.06666666666666667,0.06666666666666667,388.88666666666666,55.0
+exploratory_annotated,geometry_column,15,0,0.0,0.0,0.0,,
+exploratory_annotated,geometry_local,15,0,0.0,0.0,0.0,,
+exploratory_annotated,geometry_calibrated,15,0,0.0,0.0,0.0,,
