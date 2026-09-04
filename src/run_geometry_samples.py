@@ -224,6 +224,12 @@ def main() -> None:
     parser.add_argument("--model-dir", type=Path, required=True)
     parser.add_argument("--max-samples", type=int, default=240)
     parser.add_argument("--max-new-charts", type=int, default=400)
+    parser.add_argument(
+        "--max-labels-per-chart",
+        type=int,
+        default=1,
+        help="Accepted labels per chart; use 0 to try every viable label",
+    )
     parser.add_argument("--progress-every", type=int, default=10)
     args = parser.parse_args()
 
@@ -232,6 +238,7 @@ def main() -> None:
     torch.set_num_interop_threads(2)
     sample_jsonl = args.project / "audit" / "geometry_samples.jsonl"
     attempts_jsonl = args.project / "audit" / "construction_attempts.jsonl"
+    label_attempts_jsonl = args.project / "audit" / "label_attempts.jsonl"
     existing_samples = read_jsonl(sample_jsonl)
     attempted = {str(row["chart_id"]) for row in read_jsonl(attempts_jsonl)}
     completed_charts = {str(row["chart_id"]) for row in existing_samples}
@@ -260,6 +267,8 @@ def main() -> None:
             "representative_sample_id": candidate_row["representative_sample_id"],
             "status": "no_label_survived",
         }
+        accepted_labels: dict[int, str] = {}
+        visited_labels: set[int] = set()
         image = cv2.imread(candidate_row["image_path"], cv2.IMREAD_COLOR)
         if image is None:
             attempt["status"] = "image_read_failed"
@@ -268,7 +277,12 @@ def main() -> None:
                 candidate_row["viable_labels"],
                 key=lambda item: -float(item["construction_score"]),
             )
-            for label_item in labels:
+            for label_index, label_item in enumerate(labels):
+                if len(existing_samples) >= args.max_samples:
+                    break
+                if args.max_labels_per_chart > 0 and len(accepted_labels) >= args.max_labels_per_chart:
+                    break
+                visited_labels.add(label_index)
                 label = token_from_dict(label_item["label"])
                 confirmation = crop_confirm_label(reader, image, label)
                 if confirmation is None:
@@ -366,8 +380,26 @@ def main() -> None:
                 append_jsonl(sample_jsonl, sample)
                 existing_samples.append(sample)
                 attempt["status"] = "accepted"
-                attempt["sample_id"] = sample_id
-                break
+                accepted_labels[label_index] = sample_id
+        for label_index, label_item in enumerate(labels if image is not None else []):
+            append_jsonl(
+                label_attempts_jsonl,
+                {
+                    "chart_id": chart_id,
+                    "label_index": label_index,
+                    "chart_type": label_item["geometry_on_original"]["chart_type"],
+                    "pseudo_gold": label_item["label"].get("numeric_value"),
+                    "status": (
+                        "accepted"
+                        if label_index in accepted_labels
+                        else "construction_failed"
+                        if label_index in visited_labels
+                        else "not_attempted_due_limit"
+                    ),
+                    "sample_id": accepted_labels.get(label_index, ""),
+                },
+            )
+        attempt["sample_ids"] = list(accepted_labels.values())
         attempt["seconds"] = time.monotonic() - attempt_start
         append_jsonl(attempts_jsonl, attempt)
         if new_attempts % args.progress_every == 0 or attempt["status"] == "accepted":
