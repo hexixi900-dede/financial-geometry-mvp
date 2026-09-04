@@ -181,6 +181,17 @@ def run_geometry(args: argparse.Namespace) -> None:
     outputs: list[dict[str, Any]] = []
     cache: dict[str, dict[str, Any]] = {}
     for index, row in enumerate(rows, 1):
+        if index == 1 or index % args.progress_every == 0:
+            print(
+                json.dumps(
+                    {
+                        "starting": index,
+                        "total": len(rows),
+                        "success_so_far": sum(item["status"] == "success" for item in outputs),
+                    }
+                ),
+                flush=True,
+            )
         image_path = Path(row["image_path"])
         image = cv2.imread(str(image_path), cv2.IMREAD_COLOR)
         base = {"sample_id": row["sample_id"], "image_id": row["image_id"], "question": row["question"], "operation": row["operation"]}
@@ -262,8 +273,6 @@ def run_geometry(args: argparse.Namespace) -> None:
                 "reasoning": reasoning["formula"],
             }
         )
-        if index % args.progress_every == 0:
-            print(json.dumps({"processed": index, "total": len(rows), "success": sum(item["status"] == "success" for item in outputs)}))
     write_csv(args.output, outputs)
     print(json.dumps({"rows": len(outputs), "success": sum(row["status"] == "success" for row in outputs), "statuses": dict(Counter(row["status"] for row in outputs))}, sort_keys=True))
 
@@ -279,15 +288,33 @@ def parse_float(value: str | None) -> float | None:
 def evaluate(args: argparse.Namespace) -> None:
     predictions = {row["sample_id"]: row for row in read_csv(args.predictions)}
     gold = {row["sample_id"]: row for row in read_csv(args.gold)}
+    tolerance_reference = (
+        {row["sample_id"]: row for row in read_csv(args.tolerance_reference)}
+        if args.tolerance_reference
+        else {}
+    )
     joined: list[dict[str, Any]] = []
     for sample_id, target in gold.items():
         row = predictions.get(sample_id, {"sample_id": sample_id, "status": "missing_prediction"})
         prediction = parse_float(row.get("prediction"))
         reference = float(target["gold"])
         axis_span = parse_float(row.get("axis_span")) or 0.0
-        tolerance = max(0.05 * abs(reference), 0.02 * axis_span, 1e-6)
+        frozen_tolerance = parse_float(tolerance_reference.get(sample_id, {}).get("tolerance"))
+        tolerance = frozen_tolerance or max(0.05 * abs(reference), 0.02 * axis_span, 1e-6)
         error = None if prediction is None else abs(prediction - reference)
-        joined.append({**row, "gold": reference, "tolerance": tolerance, "absolute_error": error, "correct": int(error is not None and error <= tolerance)})
+        relative_error = None if error is None or abs(reference) < 1e-12 else error / abs(reference)
+        axis_normalized_error = None if error is None or axis_span <= 0 else error / axis_span
+        joined.append(
+            {
+                **row,
+                "gold": reference,
+                "tolerance": tolerance,
+                "absolute_error": error,
+                "relative_error": relative_error,
+                "axis_normalized_error": axis_normalized_error,
+                "correct": int(error is not None and error <= tolerance),
+            }
+        )
     write_csv(args.output_dir / "phase5_samples.csv", joined)
 
     metrics: list[dict[str, Any]] = []
@@ -295,6 +322,8 @@ def evaluate(args: argparse.Namespace) -> None:
         rows = joined if kind == "all" else [row for row in joined if row.get("chart_kind") == kind]
         covered = [row for row in rows if parse_float(row.get("prediction")) is not None]
         errors = [float(row["absolute_error"]) for row in covered]
+        relative_errors = [float(row["relative_error"]) for row in covered if parse_float(row.get("relative_error")) is not None]
+        normalized_errors = [float(row["axis_normalized_error"]) for row in covered if parse_float(row.get("axis_normalized_error")) is not None]
         metrics.append(
             {
                 "chart_kind": kind,
@@ -305,6 +334,8 @@ def evaluate(args: argparse.Namespace) -> None:
                 "conditional_accuracy": sum(int(row["correct"]) for row in covered) / len(covered) if covered else 0.0,
                 "mae": mean(errors) if errors else "",
                 "median_absolute_error": median(errors) if errors else "",
+                "mean_relative_error": mean(relative_errors) if relative_errors else "",
+                "mean_axis_normalized_error": mean(normalized_errors) if normalized_errors else "",
             }
         )
     write_csv(args.output_dir / "phase5_metrics.csv", metrics)
@@ -329,6 +360,7 @@ def parser() -> argparse.ArgumentParser:
     score.add_argument("--predictions", type=Path, required=True)
     score.add_argument("--gold", type=Path, required=True)
     score.add_argument("--output-dir", type=Path, required=True)
+    score.add_argument("--tolerance-reference", type=Path)
     return root
 
 
