@@ -58,9 +58,19 @@ construct() {
     --progress-every 10
 }
 
+evaluate() {
+  "$PYTHON_BIN" "$PROJECT_ROOT/src/evaluate_phase5_finmme_scale.py" \
+    --new-samples "$OUTPUT_ROOT/audit/geometry_samples.jsonl" \
+    --old-samples "$PROJECT_ROOT/audit/geometry_samples.jsonl" \
+    --old-split "$PROJECT_ROOT/results/chart_split.csv" \
+    --model "$PROJECT_ROOT/config/calibrator_model.json" \
+    --output-dir "$OUTPUT_ROOT/results"
+}
+
 case "$STAGE" in
   prepare) prepare ;;
   scan) scan ;;
   construct) construct ;;
-  *) echo "usage: $0 {prepare|scan|construct}" >&2; exit 2 ;;
+  evaluate) evaluate ;;
+  *) echo "usage: $0 {prepare|scan|construct|evaluate}" >&2; exit 2 ;;
 esac
