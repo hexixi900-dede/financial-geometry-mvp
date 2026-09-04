@@ -55,6 +55,7 @@ __pycache__/
 /results/phase5_strict_seed*/
 /results/phase5_pilot/
 /phase5_finmme_scale/
+/phase5_finmme_natural/
 
 # Scratch/archive outputs
 *.jsonl

@@ -80,9 +80,14 @@ def parse_axis_scalar(text: str) -> AxisScalar | None:
             suffix = "F" if repaired.endswith("f") else ""
             return AxisScalar(year + (quarter - 1) / 4.0, "quarter", f"{quarter}QFY{year % 100:02d}{suffix}")
 
-    month_match = re.fullmatch(r"([a-z]{3,4})[-'/]?([0-9]{2,4})", compact)
-    if month_match and month_match.group(1) in MONTHS:
-        month = MONTHS[month_match.group(1)]
+    month_match = re.fullmatch(r"([a-z]{3,9})[-'/]?([0-9]{2,4})", compact)
+    month_key = (
+        "sept"
+        if month_match and month_match.group(1).startswith("sept")
+        else (month_match.group(1)[:3] if month_match else "")
+    )
+    if month_match and month_key in MONTHS:
+        month = MONTHS[month_key]
         year = _expand_year(int(month_match.group(2)))
         return AxisScalar(year + (month - 1) / 12.0, "month", f"{datetime(year, month, 1):%b-%y}")
 
@@ -385,7 +390,7 @@ def _extract_question_scalar(question: str) -> AxisScalar | None:
         r"(?:[1-4]\s*q\s*(?:fy)?\s*[0-9]{2,4}f?)",
         r"(?:q\s*[1-4]\s*(?:fy)?\s*[0-9]{2,4}f?)",
         r"(?:fy\s*[0-9]{2,4}f?)",
-        r"(?:[A-Za-z]{3,4}[-'/ ]+[0-9]{2,4})",
+        r"(?:[A-Za-z]{3,9}[-'/ ]+[0-9]{2,4})",
         r"(?:19[0-9]{2}|20[0-9]{2})",
     ]
     for pattern in patterns:
@@ -399,10 +404,23 @@ def _extract_question_scalar(question: str) -> AxisScalar | None:
 
 def ground_question_to_x(question: str, anchors: list[dict[str, Any]]) -> dict[str, Any]:
     normalized_question = normalize_label(question)
+    target = _extract_question_scalar(question)
     direct: list[dict[str, Any]] = []
     for anchor in anchors:
+        anchor_scalar = anchor.get("scalar")
+        anchor_family = anchor.get("scalar_family")
+        if target is not None:
+            # Temporal/numeric labels must match by parsed value. Substring
+            # matching would incorrectly ground 2021 to a stray OCR token "1".
+            if (
+                anchor_scalar is not None
+                and anchor_family == target.family
+                and abs(float(anchor_scalar) - target.value) <= 1e-6
+            ):
+                direct.append({"anchor": anchor, "match_length": len(target.canonical)})
+            continue
         candidates = [anchor.get("normalized"), normalize_label(anchor.get("canonical") or "")]
-        match_lengths = [len(value) for value in candidates if value and value in normalized_question]
+        match_lengths = [len(value) for value in candidates if value and len(value) >= 2 and value in normalized_question]
         if match_lengths:
             direct.append({"anchor": anchor, "match_length": max(match_lengths)})
     if direct:
@@ -417,7 +435,6 @@ def ground_question_to_x(question: str, anchors: list[dict[str, Any]]) -> dict[s
             "interpolation_anchors": [],
         }
 
-    target = _extract_question_scalar(question)
     if target is None:
         return {"status": "x_grounding_unrecoverable", "reason": "question_target_not_parseable"}
     compatible = [
