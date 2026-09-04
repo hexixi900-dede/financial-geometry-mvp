@@ -63,11 +63,14 @@ def main() -> None:
     parser.add_argument("--max-new-charts", type=int, default=900)
     parser.add_argument("--target-viable", type=int, default=320)
     parser.add_argument("--progress-every", type=int, default=10)
+    parser.add_argument("--threads", type=int, default=6)
     args = parser.parse_args()
 
-    cv2.setNumThreads(6)
-    torch.set_num_threads(6)
-    torch.set_num_interop_threads(2)
+    if args.threads < 1:
+        raise ValueError("--threads must be positive")
+    cv2.setNumThreads(args.threads)
+    torch.set_num_threads(args.threads)
+    torch.set_num_interop_threads(min(2, args.threads))
 
     with args.manifest.open(encoding="utf-8", newline="") as handle:
         manifest = list(csv.DictReader(handle))
