@@ -25,7 +25,12 @@ from phase2_natural_bar import (
     parse_operation,
     semantic_plan,
 )
-from phase3_line_core import auto_geometry_pipeline, detect_dominant_line_series, geometry_value
+from phase3_line_core import (
+    auto_geometry_pipeline,
+    detect_dominant_line_series,
+    geometry_value,
+    prepare_auto_geometry_chart,
+)
 
 
 TARGET_RE = re.compile(
@@ -179,6 +184,7 @@ def run_geometry(args: argparse.Namespace) -> None:
     rows = read_csv(args.inputs)
     outputs: list[dict[str, Any]] = []
     cache: dict[str, dict[str, Any]] = {}
+    line_cache: dict[str, dict[str, Any]] = {}
     for index, row in enumerate(rows, 1):
         if index == 1 or index % args.progress_every == 0:
             print(
@@ -242,6 +248,14 @@ def run_geometry(args: argparse.Namespace) -> None:
             outputs.append({**base, "chart_kind": "line", "status": "x_targets_not_parseable"})
             continue
         cached_tokens = [token_from_dict(item) for item in bar.get("ocr_tokens", [])]
+        if row["image_id"] not in line_cache:
+            line_cache[row["image_id"]] = prepare_auto_geometry_chart(
+                reader,
+                image,
+                precomputed_tokens=cached_tokens,
+                precomputed_axis=axis,
+            )
+        prepared_line = line_cache[row["image_id"]]
         pipelines = [
             auto_geometry_pipeline(
                 reader,
@@ -249,6 +263,7 @@ def run_geometry(args: argparse.Namespace) -> None:
                 f"What is the value for {target}?",
                 precomputed_tokens=cached_tokens,
                 precomputed_axis=axis,
+                prepared_chart=prepared_line,
             )
             for target in targets
         ]

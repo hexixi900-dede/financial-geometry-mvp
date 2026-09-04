@@ -659,10 +659,9 @@ def recommended_window(target_x: float, anchors: list[dict[str, Any]], image_wid
     return float(max(9.0, min(0.055 * image_width, 0.48 * nearest_spacing)))
 
 
-def auto_geometry_pipeline(
+def prepare_auto_geometry_chart(
     reader: Any,
     masked_bgr: np.ndarray,
-    question: str,
     precomputed_tokens: list[OCRToken] | None = None,
     precomputed_axis: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
@@ -688,18 +687,49 @@ def auto_geometry_pipeline(
     if axis.get("right_axis_detected") or int(axis.get("additional_y_axis_count", 0)) > 0:
         return {"status": "multiple_y_axes_out_of_scope", "axis": axis}
     anchors, anchor_audit = discover_x_axis_anchors(reader, masked_bgr, tokens, axis)
+    series, series_mask = detect_dominant_line_series(masked_bgr, axis)
+    return {
+        "status": "ok",
+        "axis": axis,
+        "x_axis_anchors": anchors,
+        "x_axis_anchor_audit": anchor_audit,
+        "series": series,
+        "_series_mask": series_mask,
+        "masked_ocr_token_count": len(tokens),
+    }
+
+
+def auto_geometry_pipeline(
+    reader: Any,
+    masked_bgr: np.ndarray,
+    question: str,
+    precomputed_tokens: list[OCRToken] | None = None,
+    precomputed_axis: dict[str, Any] | None = None,
+    prepared_chart: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    chart = prepared_chart or prepare_auto_geometry_chart(
+        reader,
+        masked_bgr,
+        precomputed_tokens=precomputed_tokens,
+        precomputed_axis=precomputed_axis,
+    )
+    if chart.get("status") != "ok":
+        return chart
+    height, width = masked_bgr.shape[:2]
+    axis = chart["axis"]
+    anchors = chart["x_axis_anchors"]
     grounding = ground_question_to_x(question, anchors)
     result: dict[str, Any] = {
         "status": grounding["status"],
         "axis": axis,
         "x_axis_anchors": anchors,
-        "x_axis_anchor_audit": anchor_audit,
+        "x_axis_anchor_audit": chart["x_axis_anchor_audit"],
         "grounding": grounding,
-        "masked_ocr_token_count": len(tokens),
+        "masked_ocr_token_count": chart["masked_ocr_token_count"],
     }
     if grounding["status"] != "ok":
         return result
-    series, series_mask = detect_dominant_line_series(masked_bgr, axis)
+    series, series_mask = chart["series"], chart["_series_mask"]
     result["series"] = series
     if series is None or series_mask is None:
         result["status"] = "series_unrecoverable"
