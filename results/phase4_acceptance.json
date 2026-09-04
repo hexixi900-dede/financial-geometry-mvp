@@ -1,0 +1,32 @@
+{
+  "chart_kinds": {
+    "multi_line": 53,
+    "single_line": 12
+  },
+  "charts": 32,
+  "missing_selected_overlays": 0,
+  "multi_line_auto_column": {
+    "coverage": 0.6981132075471698,
+    "eligible": 37,
+    "mae": 0.2272353419839098,
+    "median_absolute_error": 0.1707937225755991,
+    "total": 53
+  },
+  "multi_line_auto_local": {
+    "coverage": 0.7169811320754716,
+    "eligible": 38,
+    "mae": 0.31210532026148613,
+    "median_absolute_error": 0.16004320129114546,
+    "total": 53
+  },
+  "runtime_hidden_input_violations": 0,
+  "runtime_statuses": {
+    "ambiguous_series": 17,
+    "line_localization_failed": 3,
+    "success": 45
+  },
+  "samples": 65,
+  "selected_overlays": 30,
+  "status": "automated_checks_passed_manual_overlay_review_pending",
+  "train_test_chart_overlap": 0
+}

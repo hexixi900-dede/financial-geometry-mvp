@@ -41,6 +41,9 @@ __pycache__/
 /phase3_debug_overlays/
 /phase3_masked_images/
 /phase3_audit/
+/phase4_audit/
+/phase4_debug_overlays/
+/phase4_masked_images/
 /logs/
 /src_sync_tmp/
 /audit/*
@@ -48,6 +51,9 @@ __pycache__/
 !/audit/chartagent_method_notes.md
 /results/finmme_chart_manifest.csv
 /results/financial_geometry_mvp_code.tar.gz
+/results/phase5_smoke*/
+/results/phase5_strict_seed*/
+/results/phase5_pilot/
 
 # Scratch/archive outputs
 *.jsonl
