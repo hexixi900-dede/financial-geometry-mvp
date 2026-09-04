@@ -18,7 +18,7 @@ from typing import Any
 import cv2
 import easyocr
 
-from geometry_core import axis_localizer, interpolate_pixel_to_value, ocr_tokens
+from geometry_core import axis_localizer, interpolate_pixel_to_value, token_from_dict
 from phase2_natural_bar import (
     analyze_chart,
     answer_from_geometry,
@@ -154,11 +154,10 @@ def x_targets(question: str, required: int) -> list[str]:
     return targets[:required]
 
 
-def chart_has_plot_numbers(reader: easyocr.Reader, image: Any) -> tuple[bool, dict[str, Any] | None]:
-    raw = reader.readtext(image, detail=1, paragraph=False, min_size=7, text_threshold=0.45, low_text=0.25, link_threshold=0.35)
-    tokens = ocr_tokens(raw)
+def chart_has_plot_numbers(analysis: dict[str, Any], image: Any) -> tuple[bool, dict[str, Any] | None]:
+    tokens = [token_from_dict(item) for item in analysis.get("ocr_tokens", [])]
     height, width = image.shape[:2]
-    axis = axis_localizer(tokens, width, height)
+    axis = analysis.get("axis") or axis_localizer(tokens, width, height)
     if axis is None:
         return True, None
     axis_indices = {int(value) for value in axis["token_indices"]}
@@ -233,7 +232,7 @@ def run_geometry(args: argparse.Namespace) -> None:
             )
             continue
 
-        has_numbers, _ = chart_has_plot_numbers(reader, image)
+        has_numbers, axis = chart_has_plot_numbers(bar, image)
         if has_numbers:
             outputs.append({**base, "chart_kind": "line", "status": "not_natural_no_label_or_axis_unrecoverable"})
             continue
@@ -242,7 +241,17 @@ def run_geometry(args: argparse.Namespace) -> None:
         if len(targets) != required:
             outputs.append({**base, "chart_kind": "line", "status": "x_targets_not_parseable"})
             continue
-        pipelines = [auto_geometry_pipeline(reader, image, f"What is the value for {target}?") for target in targets]
+        cached_tokens = [token_from_dict(item) for item in bar.get("ocr_tokens", [])]
+        pipelines = [
+            auto_geometry_pipeline(
+                reader,
+                image,
+                f"What is the value for {target}?",
+                precomputed_tokens=cached_tokens,
+                precomputed_axis=axis,
+            )
+            for target in targets
+        ]
         if any(item.get("status") != "ok" for item in pipelines):
             reason = " | ".join(str(item.get("status")) for item in pipelines)
             outputs.append({**base, "chart_kind": "line", "status": "line_geometry_failed", "reason": reason})

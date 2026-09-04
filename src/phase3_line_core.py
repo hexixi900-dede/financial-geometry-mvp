@@ -659,21 +659,30 @@ def recommended_window(target_x: float, anchors: list[dict[str, Any]], image_wid
     return float(max(9.0, min(0.055 * image_width, 0.48 * nearest_spacing)))
 
 
-def auto_geometry_pipeline(reader: Any, masked_bgr: np.ndarray, question: str) -> dict[str, Any]:
-    raw = reader.readtext(
-        masked_bgr,
-        detail=1,
-        paragraph=False,
-        min_size=7,
-        text_threshold=0.45,
-        low_text=0.25,
-        link_threshold=0.35,
-        canvas_size=2560,
-        mag_ratio=1.25,
-    )
-    tokens = ocr_tokens(raw)
+def auto_geometry_pipeline(
+    reader: Any,
+    masked_bgr: np.ndarray,
+    question: str,
+    precomputed_tokens: list[OCRToken] | None = None,
+    precomputed_axis: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    if precomputed_tokens is None:
+        raw = reader.readtext(
+            masked_bgr,
+            detail=1,
+            paragraph=False,
+            min_size=7,
+            text_threshold=0.45,
+            low_text=0.25,
+            link_threshold=0.35,
+            canvas_size=2560,
+            mag_ratio=1.25,
+        )
+        tokens = ocr_tokens(raw)
+    else:
+        tokens = precomputed_tokens
     height, width = masked_bgr.shape[:2]
-    axis = axis_localizer(tokens, width, height)
+    axis = precomputed_axis or axis_localizer(tokens, width, height)
     if axis is None:
         return {"status": "axis_unrecoverable"}
     if axis.get("right_axis_detected") or int(axis.get("additional_y_axis_count", 0)) > 0:
