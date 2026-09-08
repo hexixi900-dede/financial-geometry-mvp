@@ -1,5 +1,12 @@
 # Financial Geometry MVP
 
+## Current implementation (2026-09-08)
+
+**Start with [CURRENT_STATUS.md](CURRENT_STATUS.md)** for the current method, code map, execution instructions and experiment status. The latest implementation combines image-based VLM target planning, deterministic geometry/arithmetic, and an image-based VLM final answer. It covers single-choice, multiple-choice and numerical questions within the supported chart cohort.
+
+**The new unified experiment has not produced results yet: it is waiting for GPU availability.** The reports and numerical results below describe historical phases, not the new pipeline's accuracy.
+
+
 CPU-only minimum validation of calibrated geometry reasoning on existing FinMME charts. This repository is an auditable, lightweight snapshot of the completed experiment; the dataset, OCR models, masked-image corpus, and full debug-overlay corpus are intentionally excluded.
 
 ## Result snapshot
