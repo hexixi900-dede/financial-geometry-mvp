@@ -70,6 +70,37 @@ def _seed_components(
         mask = (cv2.inRange(crop, lower, upper) > 0) & feature_mask
         mask_u8 = cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_CLOSE, np.ones((3, 5), np.uint8))
         count, labels, stats, _ = cv2.connectedComponentsWithStats(mask_u8, connectivity=8)
+        if channel == "saturated":
+            # A grid/reference line may split one colored trace into short pieces.
+            # Collect actual same-color stroke pixels before checking support.
+            # Closing is used only for membership; it must not invent gap pixels.
+            valid = [i for i in range(1, count)
+                     if stats[i, cv2.CC_STAT_AREA] >= 18
+                     and stats[i, cv2.CC_STAT_WIDTH] >= 2
+                     and stats[i, cv2.CC_STAT_HEIGHT] >= 2]
+            if not valid:
+                continue
+            component_mask = np.isin(labels, valid) & mask
+            ys, xs = np.nonzero(component_mask)
+            column_x = np.unique(xs)
+            if len(column_x) < min_coverage * plot_width:
+                continue
+            box_width = int(xs.max() - xs.min() + 1)
+            box_height = int(ys.max() - ys.min() + 1)
+            area = int(len(xs))
+            y_centers = [float(np.median(np.flatnonzero(component_mask[:, x])))
+                         for x in column_x]
+            full_mask = np.zeros((height, width), dtype=np.uint8)
+            full_mask[top:top + crop.shape[0], left:left + crop.shape[1]][component_mask] = 1
+            components.append({
+                "median_bgr": _component_color(crop, component_mask, channel).tolist(),
+                "bbox": [int(xs.min()) + left, int(ys.min()) + top, box_width, box_height],
+                "coverage_fraction": box_width / plot_width,
+                "component_area": area, "column_count": int(len(column_x)),
+                "fill_ratio": area / max(box_width * box_height, 1),
+                "centerline_y_std": float(np.std(y_centers)), "mask": full_mask,
+            })
+            continue
         for component_index in range(1, count):
             x, y, box_width, box_height, area = map(int, stats[component_index])
             coverage = box_width / plot_width

@@ -59,7 +59,7 @@ def parse_axis_scalar(text: str) -> AxisScalar | None:
     repaired = re.sub(r"^([1-4])0fy", r"\1qfy", repaired)
     repaired = re.sub(r"^([1-4])qfx\?([0-9])", r"\1qfy2\2", repaired)
 
-    match = re.fullmatch(r"(?:fy)?([0-9]{2,4})f?", repaired)
+    match = re.fullmatch(r"(?:fy)?([0-9]{4}|[0-9]{2})f?", repaired)
     if match and ("fy" in repaired or len(match.group(1)) == 4):
         year = _expand_year(int(match.group(1)))
         if not 1900 <= year <= 2100:
@@ -69,8 +69,8 @@ def parse_axis_scalar(text: str) -> AxisScalar | None:
         return AxisScalar(float(year), "year", canonical)
 
     quarter_patterns = [
-        r"([1-4])q(?:fy)?([0-9]{2,4})f?",
-        r"q([1-4])(?:fy)?([0-9]{2,4})f?",
+        r"([1-4])q(?:fy)?([0-9]{4}|[0-9]{2})f?",
+        r"q([1-4])(?:fy)?([0-9]{4}|[0-9]{2})f?",
     ]
     for pattern in quarter_patterns:
         match = re.fullmatch(pattern, repaired)
@@ -80,7 +80,7 @@ def parse_axis_scalar(text: str) -> AxisScalar | None:
             suffix = "F" if repaired.endswith("f") else ""
             return AxisScalar(year + (quarter - 1) / 4.0, "quarter", f"{quarter}QFY{year % 100:02d}{suffix}")
 
-    month_match = re.fullmatch(r"([a-z]{3,9})[-'/]?([0-9]{2,4})", compact)
+    month_match = re.fullmatch(r"([a-z]{3,9})[-'/]?([0-9]{4}|[0-9]{2})", compact)
     month_key = (
         "sept"
         if month_match and month_match.group(1).startswith("sept")

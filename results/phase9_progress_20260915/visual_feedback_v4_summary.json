@@ -1,0 +1,127 @@
+{
+  "questions": 3699,
+  "raw_correct": 1942,
+  "selective_correct": 1914,
+  "raw_accuracy": 0.525006758583401,
+  "selective_accuracy": 0.5174371451743714,
+  "delta_pp": -0.7569613409029468,
+  "answered": 1272,
+  "rescued": 107,
+  "harmed": 135,
+  "raw_fallback_policy": "disabled_after_geometry_entry",
+  "geometry_entered": 1272,
+  "geometry_failed": 0,
+  "geometry_pending": 0,
+  "geometry_failure_counts": {},
+  "raw_routed": 2427,
+  "score_provisional": false,
+  "pending_score_definition": "Provisional: unprocessed candidates retain Raw; entered Geometry awaiting a final answer count as zero.",
+  "evaluation_status": "complete",
+  "prompts": 1272,
+  "replies": 1272,
+  "pending": 0,
+  "pending_measurements": 0,
+  "pending_answers": 0,
+  "measurement_completion_verified": true,
+  "hard_correct": 571,
+  "hard_accuracy": 0.1543660448769938,
+  "score_definition": "official_code_correct: exact choice sets; absolute per-question numeric tolerance",
+  "accuracy_scale": "fraction",
+  "overall_definition": "all-question micro accuracy, not the mean of three type accuracies",
+  "raw_prediction_source": "/data/liu_jun/finmme_reproduction/outputs/predictions/qwen25vl7b_direct_full.jsonl",
+  "full_prediction_exported": true,
+  "full_questions": 11099,
+  "full_raw_correct": 6170,
+  "full_selective_correct": 6142,
+  "full_raw_accuracy": 0.5559059374718444,
+  "full_selective_accuracy": 0.5533831876745653,
+  "full_delta_pp": -0.2522749797279034,
+  "full_finmme_population": true,
+  "by_question_type": {
+    "multiple_choice": {
+      "questions": 826,
+      "raw_correct": 297,
+      "selective_correct": 289,
+      "raw_accuracy": 0.3595641646489104,
+      "selective_accuracy": 0.3498789346246973,
+      "delta_pp": -0.9685230024213075,
+      "answered": 326,
+      "rescued": 32,
+      "harmed": 40
+    },
+    "numerical": {
+      "questions": 625,
+      "raw_correct": 175,
+      "selective_correct": 161,
+      "raw_accuracy": 0.28,
+      "selective_accuracy": 0.2576,
+      "delta_pp": -2.24,
+      "answered": 263,
+      "rescued": 15,
+      "harmed": 29
+    },
+    "single_choice": {
+      "questions": 2248,
+      "raw_correct": 1470,
+      "selective_correct": 1464,
+      "raw_accuracy": 0.6539145907473309,
+      "selective_accuracy": 0.6512455516014235,
+      "delta_pp": -0.2669039145907473,
+      "answered": 683,
+      "rescued": 60,
+      "harmed": 66
+    }
+  },
+  "full_by_question_type": {
+    "multiple_choice": {
+      "questions": 2680,
+      "raw_correct": 1065,
+      "selective_correct": 1057,
+      "raw_accuracy": 0.39738805970149255,
+      "selective_accuracy": 0.39440298507462684,
+      "delta_pp": -0.29850746268656714,
+      "answered": 326,
+      "rescued": 32,
+      "harmed": 40
+    },
+    "numerical": {
+      "questions": 1852,
+      "raw_correct": 640,
+      "selective_correct": 626,
+      "raw_accuracy": 0.34557235421166305,
+      "selective_accuracy": 0.33801295896328293,
+      "delta_pp": -0.755939524838013,
+      "answered": 263,
+      "rescued": 15,
+      "harmed": 29
+    },
+    "single_choice": {
+      "questions": 6567,
+      "raw_correct": 4465,
+      "selective_correct": 4459,
+      "raw_accuracy": 0.6799147251408558,
+      "selective_accuracy": 0.6790010659357393,
+      "delta_pp": -0.09136592051164916,
+      "answered": 683,
+      "rescued": 60,
+      "harmed": 66
+    }
+  },
+  "main_table": [
+    {
+      "method": "Raw Qwen2.5-VL",
+      "Overall": 0.5559059374718444,
+      "Single": 0.6799147251408558,
+      "Multi": 0.39738805970149255,
+      "Calculation": 0.34557235421166305
+    },
+    {
+      "method": "Geometry-enhanced Qwen2.5-VL",
+      "Overall": 0.5533831876745653,
+      "Single": 0.6790010659357393,
+      "Multi": 0.39440298507462684,
+      "Calculation": 0.33801295896328293
+    }
+  ],
+  "published_scope": "Completed full-population result; legacy structurally screened method"
+}

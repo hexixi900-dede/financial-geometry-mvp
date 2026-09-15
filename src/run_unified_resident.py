@@ -48,20 +48,24 @@ def write_rows(path, records):
 
 
 class Runtime:
-    def __init__(self, model_path, status_path=None):
+    def __init__(self, model_path, status_path=None, min_pixels=200704, max_pixels=802816, gpu_poll_seconds=5):
         self.model_path=model_path;self.model=None;self.status_path=status_path
+        self.min_pixels=min_pixels;self.max_pixels=max_pixels;self.gpu_poll_seconds=gpu_poll_seconds
 
     def generate(self, msg, max_tokens):
         if self.model is None:
+            stage=self.status_path.read_text() if self.status_path and self.status_path.exists() else 'visual planning\n'
             while not gpu_is_idle():
                 if self.status_path:self.status_path.write_text('waiting_for_gpu; model not loaded\n')
-                print(json.dumps({'time':time.time(),'gpu_idle':False}),flush=True);time.sleep(60)
+                print(json.dumps({'time':time.time(),'gpu_idle':False}),flush=True);time.sleep(self.gpu_poll_seconds)
+            if self.status_path:self.status_path.write_text('loading_model\n')
             os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',TOKENIZERS_PARALLELISM='false')
             import torch
             from transformers import AutoProcessor,Qwen2_5_VLForConditionalGeneration
-            self.processor=AutoProcessor.from_pretrained(self.model_path,local_files_only=True,min_pixels=200704,max_pixels=451584)
+            self.processor=AutoProcessor.from_pretrained(self.model_path,local_files_only=True,min_pixels=self.min_pixels,max_pixels=self.max_pixels)
             self.model=Qwen2_5_VLForConditionalGeneration.from_pretrained(self.model_path,local_files_only=True,torch_dtype=torch.bfloat16,attn_implementation='sdpa',device_map={'':'cuda:0'}).eval()
             print('Qwen loaded once; continuing through pilot and full run.',flush=True)
+            if self.status_path:self.status_path.write_text(stage)
         if foreign_gpu_processes():raise SystemExit(75)
         import torch
         from qwen_vl_utils import process_vision_info
@@ -91,6 +95,7 @@ def invoke(runtime, msg, tokens):
 
 def run_cohort(args, cohort, runtime):
     out=args.root/cohort
+    min_pixels=getattr(args,'min_pixels',200704);max_pixels=getattr(args,'max_pixels',802816)
     source=rows(out/'geometry_inputs.jsonl')
     plans=load_log(out/'plans.jsonl');measured=load_log(out/'measurements.jsonl');replies=load_log(out/'replies.jsonl')
     pending=[s for s in source if str(s['sample_id']) not in measured or
@@ -101,14 +106,15 @@ def run_cohort(args, cohort, runtime):
         for src in batch:
             sid=str(src['sample_id'])
             if sid in plans:continue
-            msg=messages(src,200704,451584)
+            msg=messages(src,min_pixels,max_pixels)
             raw,error=invoke(runtime,msg,1536)
             plan={};status='inference_error' if error else 'success'
             if not error:
                 try:plan=normalize_plan(extract_json(raw),src['question'])
                 except (ValueError,TypeError,AttributeError,RecursionError) as exc:status='plan_parse_failed';error=str(exc)
             record=dict(sample_id=sid,chart_id=src['chart_id'],plan=plan,status=status,error=error,
-                        raw_text=raw,messages=msg,planner_version='visual_regions_multitarget_review_v3')
+                        raw_text=raw,messages=msg,planner_version='visual_regions_matched_input_v1',
+                        input_protocol=src.get('input_protocol'),vlm_image_sha256=src.get('vlm_image_sha256'))
             append(out/'plans.jsonl',record);plans[sid]=record
             print(json.dumps({'stage':'plan','cohort':cohort,'sample_id':sid,'status':status}),flush=True)
         (args.root/'status.txt').write_text(f'{cohort}: CPU geometry; model retained for next answers\n')
@@ -132,20 +138,25 @@ def run_cohort(args, cohort, runtime):
             sid=str(rec['sample_id'])
             if sid in replies:continue
             msg=[{'role':'system','content':'Use the measured evidence to answer. Output JSON only.'},
-                 {'role':'user','content':[{'type':'image','image':Path(rec['image_path']).resolve().as_uri(),
-                  'min_pixels':200704,'max_pixels':451584},{'type':'text','text':rec['prompt']}]}]
+                 {'role':'user','content':[{'type':'image','image':Path(rec.get('vlm_image_path') or rec['image_path']).resolve().as_uri(),
+                  'min_pixels':min_pixels,'max_pixels':max_pixels},{'type':'text','text':rec['prompt']}]}]
             raw,error=invoke(runtime,msg,512)
             answer,status,parsed=(None,'inference_error',{}) if error else parse_reply(raw,rec)
             result=dict(sample_id=sid,chart_id=rec['chart_id'],status=status,prediction=answer,raw_reply=raw,
                         parsed_reply=parsed,prompt=rec['prompt'],messages=msg,evidence=rec['evidence'],
-                        model=str(args.model),generation={'do_sample':False,'max_new_tokens':512},error=error)
+                        model=str(args.model),generation={'do_sample':False,'max_new_tokens':512,
+                        'min_pixels':min_pixels,'max_pixels':max_pixels},input_protocol=rec.get('input_protocol'),
+                        vlm_image_sha256=rec.get('vlm_image_sha256'),error=error)
             append(out/'replies.jsonl',result);replies[sid]=result
             print(json.dumps({'stage':'answer','cohort':cohort,'sample_id':sid,'status':status}),flush=True)
     for name in ('plans','measurements','prompts','replies'):(out/(name+'.jsonl')).touch(exist_ok=True)
-    subprocess.run(['python3','src/vlm_evidence_answerer.py','evaluate',
+    evaluation=['python3','src/vlm_evidence_answerer.py','evaluate',
         '--inputs',str(out/'geometry_inputs.jsonl'),'--gold',str(out/'gold.jsonl'),'--baseline',str(out/'baseline.jsonl'),
         '--replies',str(out/'replies.jsonl'),'--prompts',str(out/'prompts.jsonl'),
-        '--raw-metrics',args.raw_metrics,'--output',str(out/'summary.json')],check=True)
+        '--measurements',str(out/'measurements.jsonl'),
+        '--raw-metrics',args.raw_metrics,'--output',str(out/'summary.json')]
+    if getattr(args,'raw_predictions',None):evaluation.extend(['--raw-predictions',str(args.raw_predictions)])
+    subprocess.run(evaluation,check=True)
 
 
 def main():
@@ -155,11 +166,21 @@ def main():
     p.add_argument('--ocr-python',default='/data/liu_jun/finmme_reproduction/phase6_chart_structure_transfer_rev2_screen_v1/.venv_ocr/bin/python')
     p.add_argument('--ocr-models',default='/data/liu_jun/finmme_reproduction/phase6_chart_structure_transfer_rev2_screen_v1/.ocr_models')
     p.add_argument('--raw-metrics',default='/data/liu_jun/finmme_reproduction/outputs/metrics/qwen25vl7b_direct_full_per_sample.jsonl')
+    p.add_argument('--raw-predictions',default='/data/liu_jun/finmme_reproduction/outputs/predictions/qwen25vl7b_direct_full.jsonl')
     p.add_argument('--batch-size',type=int,default=128)
+    p.add_argument('--min-pixels',type=int,default=200704)
+    p.add_argument('--max-pixels',type=int,default=802816)
+    p.add_argument('--gpu-poll-seconds',type=float,default=5)
     args=p.parse_args()
+    protocol_path=args.root/'input_protocol.json'
+    if not protocol_path.exists():raise ValueError('Prepare a separate matched-input run before launching this runtime')
+    protocol=json.loads(protocol_path.read_text())
+    if (args.min_pixels,args.max_pixels)!=(protocol['min_pixels'],protocol['max_pixels']):
+        raise ValueError('VLM image limits must match the frozen Raw input protocol')
+    if args.gpu_poll_seconds<=0:raise ValueError('gpu-poll-seconds must be positive')
     with (args.root/'worker.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        runtime=Runtime(args.model,args.root/'status.txt')
+        runtime=Runtime(args.model,args.root/'status.txt',args.min_pixels,args.max_pixels,args.gpu_poll_seconds)
         run_cohort(args,'pilot',runtime)
         for name in ('plans','measurements','replies'):
             merge_progress(args.root/'pilot'/(name+'.jsonl'),args.root/'full'/(name+'.jsonl'))

@@ -1,11 +1,12 @@
 # Financial Geometry MVP
 
-## Current implementation (2026-09-08)
+## Current implementation (2026-09-15)
 
-**Start with [CURRENT_STATUS.md](CURRENT_STATUS.md)** for the current method, code map, execution instructions and experiment status. The latest implementation combines image-based VLM target planning, deterministic geometry/arithmetic, and an image-based VLM final answer. It covers single-choice, multiple-choice and numerical questions within the supported chart cohort.
+Start with [CURRENT_STATUS.md](CURRENT_STATUS.md). The current question-level Router framework uses the original image, target planning, modular geometry tools, Python arithmetic and a final VLM answer. It does not reuse cached Raw answers after entering Geometry.
 
-**The new unified experiment has not produced results yet: it is waiting for GPU availability.** The reports and numerical results below describe historical phases, not the new pipeline's accuracy.
+**Latest development run: Raw 31/64 → system 30/64. Router errors remain unresolved; no full-population run of this version has started.** Full legacy results and development results are reported separately in [the progress archive](results/phase9_progress_20260915). Suspected annotation issues are retained in official scoring.
 
+The sections below describe historical experiments, with their original scope and results.
 
 CPU-only minimum validation of calibrated geometry reasoning on existing FinMME charts. This repository is an auditable, lightweight snapshot of the completed experiment; the dataset, OCR models, masked-image corpus, and full debug-overlay corpus are intentionally excluded.
 
@@ -50,7 +51,7 @@ The strict result contains 17 labels from 8 charts (13 direct anchors, 4 piecewi
 - `results/phase3_*.csv`: screening, sample audit, chart split, metrics, pairwise bootstrap, local-fit effects, calibration, and failures.
 - `examples/phase3_debug_overlays/`: 40 representative Oracle/column/local overlays plus selection manifest.
 
-## Fixed scope
+## Historical Phase 1 scope
 
 - Simple, single-y-axis vertical Bar and Line charts only.
 - Mask an explicit data-value label, retain it as pseudo-Gold, and recover the value from geometry.
@@ -68,7 +69,7 @@ The strict result contains 17 labels from 8 charts (13 direct anchors, 4 piecewi
 
 ## External inputs
 
-FinMME data and the existing OCR environment are not included. Point the pipeline at a local FinMME workspace using environment variables; no source file depends on a server-specific absolute path.
+FinMME data and the existing OCR environment are not included. Point the pipeline at a local FinMME workspace using environment variables; historical CPU entry points use configurable paths. Current Phase 9 launch scripts retain server-specific defaults; see CURRENT_STATUS.md.
 
 ```bash
 cp .env.example .env

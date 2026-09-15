@@ -3,14 +3,29 @@ import math
 
 OPERATIONS = {'direct', 'difference', 'growth_rate', 'sum', 'mean', 'min', 'max', 'ratio', 'evidence'}
 
+# Literal schema tokens are not chart locations. Keep the original targets and
+# indices intact when rejecting these so a visual plan-repair pass can fix them.
+PLACEHOLDER_LABELS = {
+    'date', 'month', 'year', 'day', 'category', 'x_label', 'target_date',
+    'start_date', 'end_date', 'start_month', 'end_month', 'date/month',
+    'month/year', 'category/date', 'date/category',
+    'category/date or interval description', '...',
+}
+
 def validate_plan(plan, question=''):
-    plan = {**plan, 'targets': [dict(t) for t in plan.get('targets', [])]}
+    # Routing is derived again after a visual correction, never inherited from
+    # the previous version of a plan that may now request a Raw fallback.
+    plan = {**plan, 'route_geometry': False, 'targets': [dict(t) for t in plan.get('targets', [])]}
     calculations = plan.get('calculations', [])
     if calculations is None: calculations = []
     if not isinstance(calculations,list) or any(not isinstance(c,dict) or not isinstance(c.get('expression'),dict) for c in calculations):
         return plan, 'invalid_calculations'
     plan['calculations'] = calculations
     targets = plan['targets']
+    for calculation in calculations:
+        error = expression_error(calculation['expression'], len(targets))
+        if error:
+            return plan, error
     op = plan.get('operation')
     if op not in OPERATIONS or not targets:
         return plan, 'missing_measurements'
@@ -21,6 +36,8 @@ def validate_plan(plan, question=''):
         t.setdefault('series', '')
         t.setdefault('measurement', 'value')
         t.setdefault('position', 'label')
+        if str(t['x_label']).strip().lower().strip('<>') in PLACEHOLDER_LABELS:
+            return plan, 'placeholder_target_label'
         region = t.get('region')
         if region is not None:
             if not isinstance(region, list) or len(region) != 4 or any(type(v) not in (int,float) or not math.isfinite(v) or not 0 <= v <= 1000 for v in region):
@@ -58,16 +75,29 @@ def calculate(operation, values):
     if operation == 'max': return max(values)
     raise ValueError('unsupported_operation')
 
-def expression(expr, values):
-    """Evaluate nested arithmetic over measured targets only, never execute model code."""
-    if not isinstance(expr, dict): raise ValueError('invalid_calculation')
+def expression_error(expr, target_count):
+    """Check the existing arithmetic contract before spending work on geometry."""
+    if not isinstance(expr, dict): return 'invalid_calculation'
     if set(expr) == {'target'}:
         i = expr['target']
-        if type(i) is not int or not 0 <= i < len(values): raise ValueError('invalid_target_reference')
-        return values[i]
+        return None if type(i) is int and 0 <= i < target_count else 'invalid_target_reference'
+    if set(expr) != {'op', 'args'}: return 'invalid_calculation'
     op = expr.get('op'); args = expr.get('args', [])
     if op not in OPERATIONS - {'evidence'} or not isinstance(args,list) or not args:
-        raise ValueError('invalid_calculation')
+        return 'invalid_calculation'
     if op == 'direct' and len(args) != 1 or op in {'difference','ratio','growth_rate'} and len(args) != 2:
-        raise ValueError('invalid_calculation_arity')
-    return calculate(op, [expression(a,values) for a in args])
+        return 'invalid_calculation_arity'
+    for arg in args:
+        error = expression_error(arg, target_count)
+        if error: return error
+    return None
+
+
+def expression(expr, values):
+    """Evaluate nested arithmetic over measured targets only, never execute model code."""
+    error = expression_error(expr, len(values))
+    if error: raise ValueError(error)
+    def evaluate(node):
+        if 'target' in node: return values[node['target']]
+        return calculate(node['op'], [evaluate(arg) for arg in node['args']])
+    return evaluate(expr)

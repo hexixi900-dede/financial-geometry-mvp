@@ -203,50 +203,20 @@ def run_bar(reader: Any, row: dict[str, Any], plan: dict[str, Any]) -> dict[str,
     bar_image = cv2.imread(row["image_path"])
     legend = detect_legend_entries(bar_image, [token_from_dict(t) for t in analysis.get("ocr_tokens", [])], analysis.get("axis")) if analysis.get("axis") else {"entries": []}
     analysis["legend"] = legend
-    if any(t.get("measurement") == "height" or t.get("region") for t in plan["targets"]):
-        from phase8_geometry_adapter import read_bar_height
-        if not analysis.get("axis") or not single_y_axis(analysis):
-            return {"status": "unsupported_axis", "stage": "bar_geometry", "bar_audit": analysis}
-        targets = [read_bar_height(reader, bar_image, analysis, t) for t in plan["targets"]]
-        if any(t["status"] != "success" for t in targets):
-            return {"status":"bar_target_unrecoverable", "stage":"bar_geometry", "target_audit":targets, "bar_audit":analysis}
-        values = [t["value"] for t in targets]
-        prediction,numeric_answer,reasoning = finish_measurement(row,plan,values)
-        return dict(status="success", stage="answer", geometry_values=values, numeric_answer=numeric_answer,
-                    prediction=prediction, reasoning=reasoning, target_audit=targets, bar_audit=analysis,
-                    y_axis_ticks=analysis["axis"]["ticks"])
-    if analysis.get("status") != "eligible_natural_no_label_bar":
-        return {"status": str(analysis.get("status")), "stage": "bar_geometry", "bar_audit": analysis}
-    bars = {str(bar["bar_id"]): bar for bar in analysis["bars"]}
-    selected: list[dict[str, Any]] = []
-    target_audit: list[dict[str, Any]] = []
-    for target in plan["targets"]:
-        match = match_bar_target(target, analysis["bars"], legend)
-        if match.get("status") != "success":
-            return {
-                "status": str(match.get("status")),
-                "stage": "target_grounding",
-                "failed_target": target,
-                "target_match": match,
-            }
-        bar = bars[str(match["target_bar_ids"][0])]
-        selected.append(bar)
-        target_audit.append({"semantic_target": target, "match": match, "bar_id": bar["bar_id"], "bbox": bar["bbox"], "point": [bar["target_x"], bar["target_y"]]})
-    if len({str(bar["bar_id"]) for bar in selected}) != len(selected):
-        return {"status": "targets_not_distinct", "stage": "target_grounding", "target_audit": target_audit}
-    values = [float(analysis["axis"]["slope"]) * float(bar["target_y"]) + float(analysis["axis"]["intercept"]) for bar in selected]
+    # All rectangular marks use the same endpoint/extent reader. Floating and
+    # stacked bars differ by the planner's measurement, not a baseline-only gate.
+    from phase8_geometry_adapter import read_bar_height
+    if not analysis.get("axis") or not single_y_axis(analysis):
+        return {"status": "unsupported_axis", "stage": "bar_geometry", "bar_audit": analysis}
+    targets = [read_bar_height(reader, bar_image, analysis, t) for t in plan["targets"]]
+    if any(t["status"] != "success" for t in targets):
+        return {"status": "bar_target_unrecoverable", "stage": "bar_geometry",
+                "target_audit": targets, "bar_audit": analysis}
+    values = [t["value"] for t in targets]
     prediction, numeric_answer, reasoning = finish_measurement(row, plan, values)
-    return {
-        "status": "success",
-        "stage": "answer",
-        "geometry_values": values,
-        "numeric_answer": numeric_answer,
-        "prediction": prediction,
-        "reasoning": reasoning,
-        "target_audit": target_audit,
-        "y_axis_ticks": analysis["axis"]["ticks"],
-        "bar_audit": analysis,
-    }
+    return dict(status="success", stage="answer", geometry_values=values,
+                numeric_answer=numeric_answer, prediction=prediction, reasoning=reasoning,
+                target_audit=targets, bar_audit=analysis, y_axis_ticks=analysis["axis"]["ticks"])
 
 
 def run_line(
@@ -286,6 +256,21 @@ def run_line(
             "stage": "line_geometry",
             "pipeline_audit": pipelines,
         }
+    # Different requested series must not silently reuse one detected curve.
+    # Queries matching the same legend entry are aliases, so retain that identity.
+    identities_by_series = {}
+    for target, pipeline in zip(plan["targets"], pipelines):
+        name = re.sub(r"[^a-z0-9]", "", target.get("series", "").lower())
+        resolution = pipeline.get("series_resolution", {})
+        series_id = resolution.get("target_series_id")
+        if not name or series_id is None:
+            continue
+        legend_index = (resolution.get("name_match", {}).get("match") or {}).get("legend_index")
+        identity = ("legend", legend_index) if legend_index is not None else ("name", name)
+        previous = identities_by_series.setdefault(series_id, identity)
+        if previous != identity:
+            return {"status": "ambiguous_series", "status_reason": "distinct_requested_series_mapped_to_one_line",
+                    "stage": "line_geometry", "pipeline_audit": pipelines}
     values = [item.get("auto_local_value") for item in pipelines]
     if any(value is None for value in values):
         return {"status": "line_value_missing", "stage": "line_geometry", "pipeline_audit": pipelines}

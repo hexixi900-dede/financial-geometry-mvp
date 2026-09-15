@@ -1,0 +1,65 @@
+{
+  "questions": 64,
+  "completed": 64,
+  "raw_correct": 31,
+  "hybrid_correct": 30,
+  "raw_accuracy": 0.484375,
+  "hybrid_accuracy": 0.46875,
+  "rescued": 1,
+  "harmed": 2,
+  "by_question_type": {
+    "single_choice": {
+      "questions": 23,
+      "raw_correct": 14,
+      "selective_correct": 12,
+      "raw_accuracy": 0.6086956521739131,
+      "selective_accuracy": 0.5217391304347826,
+      "delta_pp": -8.695652173913043,
+      "answered": 7,
+      "rescued": 0,
+      "harmed": 2,
+      "hybrid_correct": 12,
+      "hybrid_accuracy": 0.5217391304347826
+    },
+    "multiple_choice": {
+      "questions": 18,
+      "raw_correct": 8,
+      "selective_correct": 8,
+      "raw_accuracy": 0.4444444444444444,
+      "selective_accuracy": 0.4444444444444444,
+      "delta_pp": 0.0,
+      "answered": 2,
+      "rescued": 0,
+      "harmed": 0,
+      "hybrid_correct": 8,
+      "hybrid_accuracy": 0.4444444444444444
+    },
+    "numerical": {
+      "questions": 23,
+      "raw_correct": 9,
+      "selective_correct": 10,
+      "raw_accuracy": 0.391304347826087,
+      "selective_accuracy": 0.43478260869565216,
+      "delta_pp": 4.3478260869565215,
+      "answered": 15,
+      "rescued": 1,
+      "harmed": 0,
+      "hybrid_correct": 10,
+      "hybrid_accuracy": 0.43478260869565216
+    }
+  },
+  "geometry_entered": 24,
+  "raw_routed": 40,
+  "router_error": 0,
+  "measurement_success": 8,
+  "measurement_partial": 4,
+  "measurement_none": 12,
+  "method_version": "question_router_v4",
+  "evidence_source_counts": {
+    "printed_values": 26,
+    "coordinate_reading": 24,
+    "qualitative": 14
+  },
+  "scope": "64-question repeatedly used development cohort; not held-out or full-population results",
+  "full_started": false
+}

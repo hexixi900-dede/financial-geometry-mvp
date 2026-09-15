@@ -65,7 +65,7 @@ def detect_series(image: Any, axis: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def scalar(text: str) -> tuple[float, str] | None:
-    text = text.strip().replace("’", "/").replace("'", "/")
+    text = text.strip().strip(chr(34) + "“”").replace("’", "/").replace("'", "/")
     for fmt in ("%Y/%m/%d", "%Y-%m-%d", "%m/%d/%Y", "%d-%b-%Y", "%d %B %Y", "%B %d, %Y"):
         try:
             date = datetime.strptime(text, fmt)
@@ -121,11 +121,9 @@ def read_line(image: Any, chart: dict[str, Any], target: dict[str, str], series:
     axis = chart["axis"]
     anchors = chart["x_axis_anchors"]
     grounding = ground_label(target["x_label"], anchors)
+    use_endpoint = target.get("position") in {"first", "last"} and grounding["status"] != "ok"
     resolution = _resolve_target_series(target["series"] or None, chart["legend"], series, "vlm_semantic_series")
     if (resolution["status"] != "ok" and len(series) == 1
-            and (chart.get("single_series_hint") or (target["series"] and
-                 re.sub(r"[^a-z0-9]", "", target["series"].lower()) in
-                 re.sub(r"[^a-z0-9]", "", chart.get("caption", "").lower())))
             and not chart["legend"].get("entries")):
         resolution = {"status": "ok", "target_series_id": series[0]["series_id"],
                       "series_mode": "single_series_without_legend", "semantic_name": target["series"]}
@@ -133,13 +131,32 @@ def read_line(image: Any, chart: dict[str, Any], target: dict[str, str], series:
     if region:
         import numpy as np
         x1,y1,x2,y2 = region
-        if resolution["status"] != "ok":
-            scores = sorted([(int(np.count_nonzero(t["mask"][y1:y2,x1:x2])), int(t["series_id"])) for t in series], reverse=True)
+        if (resolution["status"] != "ok" and
+                (not chart["legend"].get("entries") or not target.get("series")
+                 or resolution.get("reason") == "similar_series_colors")):
+            region_series = series
+            color = _bar_series_color(target, chart["legend"])
+            if color is not None:
+                from phase4_series import color_distance
+                from phase4_multiline_core import MAX_MATCH_COLOR_DISTANCE
+                region_series = [s for s in series if color_distance(s["median_bgr"], color)["combined"] <= MAX_MATCH_COLOR_DISTANCE]
+            scores = sorted([(int(np.count_nonzero(t["mask"][y1:y2,x1:x2])), int(t["series_id"])) for t in region_series], reverse=True)
             if scores and scores[0][0] > 0 and (len(scores) == 1 or scores[0][0] > scores[1][0]*1.5):
                 resolution = {"status":"ok", "target_series_id":scores[0][1], "series_mode":"vlm_visual_region"}
         if grounding["status"] != "ok":
             grounding = {"status":"ok", "mode":"vlm_visual_region", "predicted_target_x":(x1+x2)/2,
                          "target_semantic_label":target["x_label"]}
+        elif (target.get("measurement", "value") == "value"
+              and target.get("position", "label") == "label"
+              and not x1 <= float(grounding["predicted_target_x"]) < x2):
+            # An explicit point correction must be able to replace a misplaced
+            # OCR anchor. Keep precise anchors inside the box, and retain the
+            # conflicting anchor so the next visual review can inspect the change.
+            grounding = {"status": "ok", "mode": "vlm_visual_region",
+                         "predicted_target_x": (x1+x2)/2,
+                         "target_semantic_label": target["x_label"],
+                         "reason": "axis_anchor_outside_visual_region",
+                         "previous_grounding": grounding}
     selected = None
     selected_mask = None
     search_region = None
@@ -158,10 +175,11 @@ def read_line(image: Any, chart: dict[str, Any], target: dict[str, str], series:
             x1, y1, x2, y2 = search_region
             selected_mask = np.zeros_like(selected["mask"])
             selected_mask[y1:y2, x1:x2] = selected["mask"][y1:y2, x1:x2]
-    # Endpoint semantics come from the VLM plan; read the selected mark's pixels.
-    if target.get("position") in {"first", "last"} and selected_mask is not None:
+    # first/last refers to the whole selected series. A region may identify its
+    # pixels, but its crop boundary must not become a new series endpoint.
+    if use_endpoint and selected_mask is not None:
         import numpy as np
-        ys, xs = np.nonzero(selected_mask)
+        ys, xs = np.nonzero(selected["mask"])
         if len(xs):
             edge_x = int(xs.min() if target["position"] == "first" else xs.max())
             grounding = {"status": "ok", "mode": "vlm_"+target["position"]+"_point",
@@ -200,7 +218,7 @@ def read_line(image: Any, chart: dict[str, Any], target: dict[str, str], series:
     result.update(local_search_window=[x-window, x+window], series_continuity=local_continuity(selected_mask, x, window), series_local_overlap=overlap)
     if others and overlap["local_overlap_fraction"] > MAX_LOCAL_OVERLAP_FRACTION:
         return {**result, "status": "ambiguous_series", "status_reason": "local_overlap_with_other_series"}
-    if target.get("position") in {"first", "last"}:
+    if use_endpoint:
         import numpy as np
         column = np.flatnonzero(selected_mask[:, int(x)])
         if len(column):
@@ -321,9 +339,25 @@ def read_bar_height(reader, image, analysis, target):
     series_color = _bar_series_color(target, analysis.get('legend'))
     baseline = min(height-1, int(round(-axis['intercept']/axis['slope'])))
     baseline = max(int(max(t['pixel_y'] for t in axis['ticks'])), baseline)
+    # Use the chart's existing word boxes before re-OCRing narrow column crops.
+    # Narrow crops used to cut category names and merge neighbouring waterfall bars.
+    labels = [t for t in analysis.get('ocr_tokens', [])
+              if t.get('center') and baseline - 3 <= t['center'][1] <= baseline + .18*height
+              and left <= t['center'][0] <= right]
+    matched_labels = [t for t in labels if query and norm(t['text']) == query]
+    category_span = None
+    if len(matched_labels) == 1:
+        cx = matched_labels[0]['center'][0]
+        before = [t['center'][0] for t in labels if t['center'][0] < cx - 5]
+        after = [t['center'][0] for t in labels if t['center'][0] > cx + 5]
+        category_span = ((max(before)+cx)/2 if before else left,
+                         (min(after)+cx)/2 if after else right)
     boxes = []
     for comp in _quantized_components(image, axis):
         x,y,w,h = [int(comp[k]) for k in ('x','y','w','h')]
+        color = np.asarray(comp['median_bgr'])
+        # White rectangles between floating marks are background, not bar pieces.
+        if color.min() >= 245: continue
         if not (5 <= w <= .17*width and h >= 2 and comp['fill'] >= .65
                 and x >= left-3 and x+w <= right+3 and y >= top-3 and y+h <= bottom+3):
             continue
@@ -338,6 +372,10 @@ def read_bar_height(reader, image, analysis, target):
                 if x-2 <= cx <= x+w+2 and overlap > 0: boxes.append((x,y,w,h))
             elif overlap >= .5*w*h: boxes.append((x,y,w,h))
             continue
+        if category_span:
+            if category_span[0] <= x+w/2 <= category_span[1]: boxes.append((x,y,w,h))
+            continue
+        if reader is None: continue
         x1,x2=max(0,x-3),min(width,x+w+3)
         y1,y2=max(0,baseline),min(height,baseline+max(20,int(.16*height)))
         if y2<=y1: continue
@@ -358,11 +396,28 @@ def read_bar_height(reader, image, analysis, target):
         distances=[abs(col[0][0]+col[0][2]/2-cx) for col in columns]
         if distances[1]-distances[0]<2:return {'status':'ambiguous_bar_columns'}
     boxes=columns[0]
+    # Join touching stacked pieces, not detached grid-line fragments in the same
+    # column. The old min/max union incorrectly expanded bars up to distant ticks.
+    connected=[]
+    for box in sorted(boxes,key=lambda b:b[1]):
+        if connected and box[1] <= max(b[1]+b[3] for b in connected[-1])+2:
+            connected[-1].append(box)
+        else: connected.append([box])
+    boxes=max(connected,key=lambda group:sum(b[2]*b[3] for b in group))
     # A category's vertical extent can include touching differently colored pieces.
     x=min(b[0] for b in boxes);y=min(b[1] for b in boxes)
     right=max(b[0]+b[2]-1 for b in boxes);bottom=max(b[1]+b[3]-1 for b in boxes)
     top_value=interpolate_pixel_to_value(y,axis);bottom_value=interpolate_pixel_to_value(bottom,axis)
     endpoint_y,endpoint_value=(y,top_value) if abs(top_value)>=abs(bottom_value) else (bottom,bottom_value)
+    if target.get('measurement') == 'value' and region:
+        # A tight endpoint box can request either end of a floating bar. When
+        # it covers the whole column, keep the usual endpoint away from zero.
+        if not (region[1] <= y and region[3] > bottom):
+            center_y = (region[1]+region[3]-1)/2
+            if abs(center_y-y) < abs(center_y-bottom):
+                endpoint_y,endpoint_value=y,top_value
+            elif abs(center_y-bottom) < abs(center_y-y):
+                endpoint_y,endpoint_value=bottom,bottom_value
     return {'status':'success','bbox':[x,y,right-x+1,bottom-y+1],
             'point':[(x+right)/2,endpoint_y if target.get('measurement')=='value' else y],'bottom_point':[(x+right)/2,bottom],
             'value':abs(top_value-bottom_value) if target.get('measurement') == 'height' else endpoint_value,'top_value':top_value,'bottom_value':bottom_value,

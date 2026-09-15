@@ -72,3 +72,10 @@ __pycache__/
 /phase9_evidence/
 
 /.venv_inspector/
+
+# Server-only release snapshots and temporary reviews
+/phase9_releases/
+/phase9_cpu_checks/
+/PHASE9_CURRENT_before_*.md
+/apps/geometry_inspector.before_*.py
+/apps/geometry_inspector.pre_*.py

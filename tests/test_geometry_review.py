@@ -110,3 +110,19 @@ class LineRegionReview(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class WaterfallCategories(unittest.TestCase):
+    def test_cached_category_boxes_measure_floating_bar_without_crop_ocr(self):
+        image = np.full((300,400,3),255,np.uint8)
+        image[130:250,80:110] = [150,50,20]
+        image[110:130,180:210] = [180,20,120]
+        image[90:92,80:110] = [220,220,220]  # Detached grid fragment, not another segment.
+        axis = dict(plot_bbox=[40,20,360,260],slope=-.1,intercept=25,ticks=[{'pixel_y':250}])
+        tokens = [dict(text='Alpha',center=[95,270]),dict(text='Long category',center=[195,270])]
+        analysis = dict(axis=axis,ocr_tokens=tokens)
+        class NoOCR:
+            def readtext(self,*a,**kw):raise AssertionError('Reuse whole-chart OCR coordinates')
+        results = [read_bar_height(NoOCR(),image,analysis,dict(x_label=label,series='',measurement='height'))
+                   for label in ('Alpha','Long category')]
+        self.assertTrue(all(r['status']=='success' for r in results))
+        self.assertAlmostEqual(results[0]['value']-results[1]['value'],10)

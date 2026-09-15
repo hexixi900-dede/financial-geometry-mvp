@@ -38,7 +38,7 @@ def _is_name_token(token: Any, width: int, height: int) -> bool:
     return True
 
 
-def _swatch_in_zone(image_bgr: np.ndarray, zone: tuple[int, int, int, int]) -> dict[str, Any] | None:
+def _swatch_in_zone(image_bgr: np.ndarray, zone: tuple[int, int, int, int], text_boxes=()) -> dict[str, Any] | None:
     x1, y1, x2, y2 = zone
     height, width = image_bgr.shape[:2]
     x1, x2 = max(0, x1), min(width, x2)
@@ -50,9 +50,16 @@ def _swatch_in_zone(image_bgr: np.ndarray, zone: tuple[int, int, int, int]) -> d
     best: dict[str, Any] | None = None
     for channel_mask, min_pixels, channel in (
         ((hsv[:, :, 1] >= 50) & (hsv[:, :, 2] >= 40) & (hsv[:, :, 2] <= 250), 8, "saturated"),
-        ((hsv[:, :, 1] < 60) & (hsv[:, :, 2] >= 30) & (hsv[:, :, 2] <= 215), 10, "neutral"),
+        ((hsv[:, :, 1] < 60) & (hsv[:, :, 2] <= 215), 8, "neutral"),
     ):
-        mask = channel_mask
+        mask = channel_mask.copy()
+        # A neighboring OCR word is not a legend swatch. Keep its glyph pixels
+        # out of color statistics even if the search zone overlaps the word.
+        for bx1, by1, bx2, by2 in text_boxes:
+            lx, rx = max(0, int(bx1)-x1), min(x2-x1, int(math.ceil(bx2))-x1)
+            ty, by = max(0, int(by1)-y1), min(y2-y1, int(math.ceil(by2))-y1)
+            if rx > lx and by > ty:
+                mask[ty:by, lx:rx] = False
         count = int(np.count_nonzero(mask))
         if count < min_pixels:
             continue
@@ -60,7 +67,9 @@ def _swatch_in_zone(image_bgr: np.ndarray, zone: tuple[int, int, int, int]) -> d
         swatch_w = int(xs.max() - xs.min() + 1)
         swatch_h = int(ys.max() - ys.min() + 1)
         # Legend swatches are line segments (wide and thin) or markers (compact).
-        if swatch_w < 3 or swatch_h < 2 or swatch_w > 16 * swatch_h:
+        if swatch_w < 3 or swatch_h < 1 or swatch_w > 64 * swatch_h:
+            continue
+        if swatch_h == 1 and swatch_w < 5:
             continue
         fill = count / float(swatch_w * swatch_h)
         if fill < 0.15:
@@ -127,6 +136,13 @@ def detect_legend_entries(
         row.sort(key=lambda token: token.x1)
     rows.sort(key=lambda row: min(item.cy for item in row))
 
+    text_boxes = [(t.x1,t.y1,t.x2,t.y2) for t in tokens]
+    # Newly admitted black strokes must not turn the bottom axis into a legend.
+    # OCR sometimes names its ticks as letters; exclude the calibrated bottom row.
+    if axis and axis.get("ticks"):
+        bottom_tick = max(float(t["pixel_y"]) for t in axis["ticks"])
+        halo = max(4.0, .012*height)
+        text_boxes.append((0, bottom_tick-halo, width, bottom_tick+halo))
     entries: list[dict[str, Any]] = []
     for row in rows:
         row_height = max(float(np.median([item.y2 - item.y1 for item in row])), 6.0)
@@ -142,7 +158,7 @@ def detect_legend_entries(
             )
             swatch = None
             if position == 0 or gap_left > 0.35 * row_height:
-                swatch = _swatch_in_zone(image_bgr, zone_left)
+                swatch = _swatch_in_zone(image_bgr, zone_left, text_boxes)
             if swatch is not None:
                 if current is not None:
                     entries.append(current)
@@ -161,7 +177,7 @@ def detect_legend_entries(
                 int(round(token.x2 + 2.6 * row_height)),
                 int(round(token.cy + 0.85 * row_height)),
             )
-            trailing = _swatch_in_zone(image_bgr, zone_right)
+            trailing = _swatch_in_zone(image_bgr, zone_right, text_boxes)
             if trailing is not None:
                 current = {"tokens": [token], "swatch": trailing}
         if current is not None:

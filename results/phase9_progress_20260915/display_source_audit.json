@@ -1,0 +1,21 @@
+{
+  "prediction_mismatches": [],
+  "reference_mismatches": [],
+  "source_mismatches": [],
+  "population_counts": {
+    "raw": 11099,
+    "metrics": 11099,
+    "gold": 11099,
+    "sources": 11099
+  },
+  "original_dataset_source": "/data/liu_jun/finmme_reproduction/data/FinMME_train/data-00000-of-00001.arrow",
+  "dataset_rows": 11099,
+  "original_dataset_mismatches": {
+    "question": [],
+    "question_type": [],
+    "options": [],
+    "reference": []
+  },
+  "final_display_vs_scoring_mismatches": [],
+  "checked_pilot_original_image_hash_mismatches": []
+}
