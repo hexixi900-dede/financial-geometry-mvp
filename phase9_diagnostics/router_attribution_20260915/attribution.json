@@ -1,0 +1,5023 @@
+{
+  "summary": {
+    "c0_options_production": {
+      "n": 64,
+      "evidence_source": {
+        "printed_values": 26,
+        "coordinate_reading": 24,
+        "qualitative": 14
+      },
+      "needs_geometry": {
+        "false": 40,
+        "true": 24
+      },
+      "printed_values": 26,
+      "verdicts": {
+        "number_exists_in_chart_text": 1,
+        "number_exists_in_chart_text|number_present_in_question": 2,
+        "absent_from_image|number_present_in_options|number_present_in_question": 1,
+        "only_axis_tick|number_present_in_options|number_present_in_question": 2,
+        "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question": 2,
+        "only_axis_tick": 2,
+        "likely_uncalibrated_axis_tick": 1,
+        "number_exists_in_chart_text|located_in_plot|number_present_in_question": 2,
+        "no_number_claimed": 8,
+        "only_axis_tick|number_present_in_question": 1,
+        "number_exists_in_chart_text|not_in_plot|number_present_in_options": 1,
+        "number_exists_in_chart_text|located_in_plot|number_present_in_options": 1,
+        "number_exists_in_chart_text|number_present_in_options|number_present_in_question": 1,
+        "number_exists_in_chart_text|not_in_plot|number_present_in_question": 1
+      },
+      "unsupported_printed_claims": [
+        "11095",
+        "18",
+        "1810",
+        "2500",
+        "42",
+        "43",
+        "828"
+      ]
+    },
+    "c1_blind_production": {
+      "n": 64,
+      "evidence_source": {
+        "printed_values": 23,
+        "coordinate_reading": 30,
+        "qualitative": 11
+      },
+      "needs_geometry": {
+        "false": 34,
+        "true": 30
+      },
+      "printed_values": 23,
+      "verdicts": {
+        "number_exists_in_chart_text": 1,
+        "number_exists_in_chart_text|number_present_in_question": 2,
+        "absent_from_image|number_present_in_options|number_present_in_question": 1,
+        "only_axis_tick|number_present_in_options|number_present_in_question": 1,
+        "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question": 3,
+        "only_axis_tick": 3,
+        "number_exists_in_chart_text|not_in_plot|number_present_in_question": 3,
+        "no_number_claimed": 5,
+        "number_exists_in_chart_text|located_in_plot|number_present_in_question": 1,
+        "absent_from_image": 1,
+        "number_exists_in_chart_text|located_in_plot": 1,
+        "number_exists_in_chart_text|number_present_in_options|number_present_in_question": 1
+      },
+      "unsupported_printed_claims": [
+        "11",
+        "11095",
+        "18",
+        "20",
+        "42",
+        "43"
+      ]
+    },
+    "c2_blind_quote": {
+      "n": 64,
+      "evidence_source": {
+        "printed_values": 18,
+        "coordinate_reading": 37,
+        "qualitative": 9
+      },
+      "needs_geometry": {
+        "false": 27,
+        "true": 37
+      },
+      "printed_values": 18,
+      "verdicts": {
+        "number_exists_in_chart_text": 6,
+        "absent_from_image|number_present_in_options": 1,
+        "only_axis_tick": 2,
+        "absent_from_image": 5,
+        "number_exists_in_chart_text|located_in_plot": 3,
+        "number_exists_in_chart_text|not_in_plot": 1
+      },
+      "unsupported_printed_claims": [
+        "11",
+        "11095",
+        "1320",
+        "20",
+        "2455",
+        "43",
+        "4599",
+        "77"
+      ]
+    },
+    "c3_blind_two_stage": {
+      "n": 64,
+      "evidence_source": {
+        "printed_values": 16,
+        "coordinate_reading": 26,
+        "qualitative": 22
+      },
+      "needs_geometry": {
+        "false": 38,
+        "true": 26
+      },
+      "printed_values": 16,
+      "verdicts": {
+        "number_exists_in_chart_text": 2,
+        "only_axis_tick": 3,
+        "absent_from_image": 3,
+        "number_exists_in_chart_text|located_in_plot": 2,
+        "no_number_claimed": 6
+      },
+      "unsupported_printed_claims": [
+        "1272",
+        "1320",
+        "2455",
+        "42",
+        "4599",
+        "77"
+      ]
+    }
+  },
+  "fidelity": {
+    "matched": 64,
+    "mismatched": [],
+    "missing": []
+  },
+  "flips": {
+    "c1_blind_production": {
+      "changed": 8,
+      "detail": [
+        {
+          "sample_id": "828",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "1810",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2333",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "3232",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "4128",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "5390",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "0",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "13",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        }
+      ]
+    },
+    "c2_blind_quote": {
+      "changed": 18,
+      "detail": [
+        {
+          "sample_id": "18",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "124",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "828",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "1320",
+          "before": "coordinate_reading",
+          "after": "printed_values"
+        },
+        {
+          "sample_id": "1777",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "1810",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2333",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2500",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2577",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2636",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "3232",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "4128",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "5390",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "5422",
+          "before": "printed_values",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "0",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "13",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "24",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "42",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        }
+      ]
+    },
+    "c3_blind_two_stage": {
+      "changed": 24,
+      "detail": [
+        {
+          "sample_id": "43",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "1960",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "18",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "124",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "11095",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "828",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "869",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "1272",
+          "before": "coordinate_reading",
+          "after": "printed_values"
+        },
+        {
+          "sample_id": "1320",
+          "before": "coordinate_reading",
+          "after": "printed_values"
+        },
+        {
+          "sample_id": "1491",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "1777",
+          "before": "printed_values",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "1810",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "2333",
+          "before": "printed_values",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "2500",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "5390",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "5422",
+          "before": "printed_values",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "1",
+          "before": "qualitative",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "6",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "11",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "5",
+          "before": "printed_values",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "21",
+          "before": "coordinate_reading",
+          "after": "qualitative"
+        },
+        {
+          "sample_id": "22",
+          "before": "printed_values",
+          "after": "coordinate_reading"
+        },
+        {
+          "sample_id": "56",
+          "before": "coordinate_reading",
+          "after": "printed_values"
+        },
+        {
+          "sample_id": "114",
+          "before": "coordinate_reading",
+          "after": "printed_values"
+        }
+      ]
+    }
+  },
+  "audited": {
+    "43": {
+      "note": "Router声称“70 MYR bn已标注”，原图只有轴刻度和折线，目标点没有70标签。应读取数值，属于分流误判。",
+      "question": "What was the total loan value applied in January 2021?",
+      "frozen": "printed_values",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 12,
+        "axis_ticks": 9,
+        "all_numeric": [
+          "0",
+          "100",
+          "120",
+          "140",
+          "160",
+          "20",
+          "3",
+          "40",
+          "60",
+          "80",
+          "9.39885e+17"
+        ],
+        "tick_numeric": [
+          "0",
+          "100",
+          "120",
+          "140",
+          "160",
+          "20",
+          "40",
+          "60",
+          "80"
+        ],
+        "non_tick_numeric": [
+          "3",
+          "9.39885e+17"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The total loan value applied in January 2021 is clearly labeled as approximately 70 MYR bn.",
+          "verdict": "absent_from_image|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The total loan value applied in January 2021 is directly labeled on the graph as 70 MYR bn.",
+          "verdict": "absent_from_image|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "source": "printed_values",
+          "printed_label": "70",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The value '70' is printed directly on the bar corresponding to January 2021.",
+          "verdict": "absent_from_image|number_present_in_options"
+        },
+        "c3_blind_two_stage": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": true,
+          "has_printed": false,
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "18": {
+      "note": "Router把约30的轴读数称作直接标签。目标点没有数值标注；问题问P/E数值，应进入几何读取。",
+      "question": "What was the P/E ratio of Sinobiopharma at the beginning of January 2021?",
+      "frozen": "printed_values",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 25,
+        "axis_ticks": 10,
+        "all_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24",
+          "0",
+          "10",
+          "15",
+          "20",
+          "25",
+          "30",
+          "35",
+          "40",
+          "45",
+          "5"
+        ],
+        "tick_numeric": [
+          "0",
+          "10",
+          "15",
+          "20",
+          "25",
+          "30",
+          "35",
+          "40",
+          "45",
+          "5"
+        ],
+        "non_tick_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The P/E ratio of Sinobiopharma at the beginning of January 2021 is clearly labeled as 30.",
+          "verdict": "only_axis_tick|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The P/E ratio of Sinobiopharma at the beginning of January 2021 is directly labeled as 30 on the graph.",
+          "verdict": "only_axis_tick|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The P/E ratio is not directly printed on the graph. The x-axis shows months, and the y-axis shows values, but there is no direct label indicating the P/E ratio. To find the P/E ratio, we need to read the y-axis value corresponding to the start of January 2021.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": true,
+          "has_printed": false,
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "11095": {
+      "note": "Router声称Saudi/Kuwait有3.0和4.5标签，原图没有这些目标标签。它还把浮动柱的端点/高度混淆；本题数值差需要测量。",
+      "question": "How much more spare capacity does Saudi have compared to Kuwait in mb/d?",
+      "frozen": "printed_values",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 22,
+        "axis_ticks": 7,
+        "all_numeric": [
+          "0",
+          "1",
+          "20",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "tick_numeric": [
+          "0",
+          "1",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "non_tick_numeric": [
+          "20",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The spare capacity for Saudi Arabia and Kuwait is directly labeled on the bar graph as 3.0 mb/d and 4.5 mb/d respectively.",
+          "verdict": "only_axis_tick"
+        },
+        "c1_blind_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The spare capacity for Saudi Arabia and Kuwait is directly labeled on the bar graph as 3.0 mb/d and 4.5 mb/d respectively.",
+          "verdict": "only_axis_tick"
+        },
+        "c2_blind_quote": {
+          "source": "printed_values",
+          "printed_label": "3.0",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The spare capacity for Saudi Arabia is clearly labeled as 3.0 mb/d.",
+          "verdict": "only_axis_tick"
+        },
+        "c3_blind_two_stage": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": true,
+          "has_printed": false,
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "828": {
+      "note": "Router引用右轴10%作为数据标签，类别错误。题目问最高值对应哪一年，属于可先视觉比较的类别问题，不必因无数值标签就做数值恢复。",
+      "question": "Which of the following years shows the highest value for the trailing margin percentage?",
+      "frozen": "printed_values",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 8,
+        "all_numeric": [
+          "0.4",
+          "0.6",
+          "0.8",
+          "1",
+          "1.2",
+          "1.4",
+          "1.6",
+          "1.8",
+          "10",
+          "12",
+          "5",
+          "6",
+          "8.88889e+18"
+        ],
+        "tick_numeric": [
+          "0.4",
+          "0.6",
+          "0.8",
+          "1",
+          "1.2",
+          "1.4",
+          "1.6",
+          "1.8"
+        ],
+        "non_tick_numeric": [
+          "10",
+          "12",
+          "5",
+          "6",
+          "8.88889e+18"
+        ],
+        "edge_like_numeric": [
+          "10",
+          "5"
+        ],
+        "in_plot_numeric": [
+          "10",
+          "12",
+          "5",
+          "6"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "printed_values",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest value for the trailing margin percentage is clearly labeled as 10% on the right y-axis.",
+          "verdict": "likely_uncalibrated_axis_tick"
+        },
+        "c1_blind_production": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest value for the trailing margin percentage (orange line) appears to be around 10%, which is not directly labeled on the graph. It must be estimated by reading the height of the orange line at the peak.",
+          "verdict": "likely_uncalibrated_axis_tick"
+        },
+        "c2_blind_quote": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest value for the trailing margin percentage is not directly labeled on the graph, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": true,
+          "has_printed": false,
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1960": {
+      "note": "题目问最高点的季度，不直接要求最高数值；Router将类别定位误说成读取y值。另：Gold C来自原数据；图中B约27.5高于C约26，全局最高不在选项，存在题干/标注疑点。",
+      "question": "In which quarter did the Non-Interest Income/Operating Income percentage reach its highest point in the provided chart?",
+      "frozen": "coordinate_reading",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 11,
+        "axis_ticks": 8,
+        "all_numeric": [
+          "0",
+          "10",
+          "15",
+          "2.82888e+17",
+          "20",
+          "25",
+          "30",
+          "35",
+          "5",
+          "7"
+        ],
+        "tick_numeric": [
+          "0",
+          "10",
+          "15",
+          "20",
+          "25",
+          "30",
+          "35",
+          "5"
+        ],
+        "non_tick_numeric": [
+          "2.82888e+17",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest point on the graph is not labeled with a specific quarter, so it must be estimated by reading the graph's scale.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest point on the graph is not labeled with a specific value, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The highest point on the graph is not labeled with a specific value, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "source": "qualitative",
+          "printed_label": "",
+          "requires_numeric": false,
+          "has_printed": null,
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1491": {
+      "note": "题目问最接近最低值的季度，可以先视觉比较。Gold D确为原数据标注；原图选项A更接近最低，另记标注疑点，评分未改。",
+      "question": "Which quarters are closest to the lowest DOI value in the chart?",
+      "frozen": "coordinate_reading",
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 11,
+        "all_numeric": [
+          "100",
+          "110",
+          "120",
+          "130",
+          "140",
+          "150",
+          "160",
+          "2.82829e+20",
+          "60",
+          "70",
+          "80",
+          "90"
+        ],
+        "tick_numeric": [
+          "100",
+          "110",
+          "120",
+          "130",
+          "140",
+          "150",
+          "160",
+          "60",
+          "70",
+          "80",
+          "90"
+        ],
+        "non_tick_numeric": [
+          "2.82829e+20"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The lowest DOI value in the chart is not directly labeled with a quarter. It must be estimated by reading the position on the y-axis.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The lowest DOI value in the chart is not directly labeled with a specific quarter. It must be estimated by reading the y-axis value corresponding to the lowest point on the red line.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "source": "coordinate_reading",
+          "printed_label": "",
+          "requires_numeric": null,
+          "has_printed": null,
+          "reason": "The lowest DOI value in the chart appears to be around the 80 mark on the y-axis, which corresponds to the 1Q14 quarter.",
+          "verdict": "only_axis_tick|number_present_in_options"
+        },
+        "c3_blind_two_stage": {
+          "source": "qualitative",
+          "printed_label": "",
+          "requires_numeric": false,
+          "has_printed": null,
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    }
+  },
+  "per_sample": {
+    "62": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 8,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "143",
+          "48",
+          "62"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The difference in allocation value between the Interval Fund ($62bn) and the Tender Offer ($99bn) can be directly calculated by subtracting the smaller value from the larger value.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The difference in allocation value between the Interval Fund ($62bn) and the Tender Offer ($99bn) can be directly calculated by subtracting the smaller value from the larger value.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "$62bn",
+          "reason": "The Interval Fund sector is labeled with $62bn.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "$62bn",
+          "reason": "",
+          "verdict": "number_exists_in_chart_text"
+        }
+      }
+    },
+    "69": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "multiple_panels_or_additional_axes",
+        "calibrated": false,
+        "tokens": 114,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "0",
+          "1",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "2",
+          "21",
+          "3"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the activity levels for the GBP swap 2s10s are printed in the table cells, allowing for direct calculation of the average.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the activity levels for the GBP swap 2s10s are printed as data labels within the table.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "9",
+          "reason": "The average activity level for the GBP swap 2s10s can be calculated by summing all the activity levels and dividing by the number of months.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "5",
+          "reason": "",
+          "verdict": "number_exists_in_chart_text"
+        }
+      }
+    },
+    "43": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 12,
+        "axis_ticks": 9,
+        "non_tick_numeric": [
+          "3",
+          "9.39885e+17"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The total loan value applied in January 2021 is clearly labeled as approximately 70 MYR bn.",
+          "verdict": "absent_from_image|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The total loan value applied in January 2021 is directly labeled on the graph as 70 MYR bn.",
+          "verdict": "absent_from_image|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "70",
+          "reason": "The value '70' is printed directly on the bar corresponding to January 2021.",
+          "verdict": "absent_from_image|number_present_in_options"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1960": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 11,
+        "axis_ticks": 8,
+        "non_tick_numeric": [
+          "2.82888e+17",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point on the graph is not labeled with a specific quarter, so it must be estimated by reading the graph's scale.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point on the graph is not labeled with a specific value, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point on the graph is not labeled with a specific value, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1314": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 23,
+        "axis_ticks": 6,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "1000",
+          "1750",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "25",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact values for the stock price on 2021/07/01 and 2024/01/01 need to be read from the graph, as they are not directly labeled.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact values for the stock price on 2021/07/01 and 2024/01/01 need to be read from the graph, as they are not directly labeled.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact percentage increase in the stock price from 2021/07/01 to 2024/01/01 requires reading the y-axis values at these specific dates.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a percentage increase which requires calculating the difference between two specific points on the graph.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "18": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 25,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The P/E ratio of Sinobiopharma at the beginning of January 2021 is clearly labeled as 30.",
+          "verdict": "only_axis_tick|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The P/E ratio of Sinobiopharma at the beginning of January 2021 is directly labeled as 30 on the graph.",
+          "verdict": "only_axis_tick|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The P/E ratio is not directly printed on the graph. The x-axis shows months, and the y-axis shows values, but there is no direct label indicating the P/E ratio. To find the P/E ratio, we need to read the y-axis value corresponding to the start of January 2021.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "124": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 29,
+        "axis_ticks": 15,
+        "non_tick_numeric": [
+          "-2024",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "23"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price of ICBC (1398 HK) on 23-Feb-2024 is directly printed as HKD 4.14.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price of ICBC (1398 HK) on 23-Feb-2024 is directly printed as 4.50.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price of ICBC (1398 HK) on 23-Feb-2024 is not directly labeled on the graph. It must be estimated by reading the position of the closing price line on the y-axis.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "11095": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 22,
+        "axis_ticks": 7,
+        "non_tick_numeric": [
+          "20",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The spare capacity for Saudi Arabia and Kuwait is directly labeled on the bar graph as 3.0 mb/d and 4.5 mb/d respectively.",
+          "verdict": "only_axis_tick"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The spare capacity for Saudi Arabia and Kuwait is directly labeled on the bar graph as 3.0 mb/d and 4.5 mb/d respectively.",
+          "verdict": "only_axis_tick"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "3.0",
+          "reason": "The spare capacity for Saudi Arabia is clearly labeled as 3.0 mb/d.",
+          "verdict": "only_axis_tick"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "7738": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 8,
+        "non_tick_numeric": [
+          "-20",
+          "-40",
+          "6",
+          "8.88889e+21"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The y-o-y growth percentage for SEC Wafer production in Q1 2017 is not directly labeled on the graph. It must be estimated by reading the height of the red line corresponding to Q1 2017.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The y-o-y growth percentage for SEC Wafer production in Q1 2017 is not directly labeled on the graph. It must be read from the plotted position of the red line corresponding to Q1 2017.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact y-o-y growth percentage for SEC Wafer production in Q1 2017 is not printed on the chart. It must be estimated by reading the height of the red line corresponding to Q1 2017.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "68": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 17,
+        "axis_ticks": 4,
+        "non_tick_numeric": [
+          "1021",
+          "1022",
+          "1023",
+          "2021",
+          "2022",
+          "2023",
+          "21",
+          "25",
+          "3021",
+          "3022",
+          "3023",
+          "4",
+          "4022",
+          "4023"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1021",
+          "1022",
+          "1023",
+          "2021",
+          "2022",
+          "2023",
+          "21",
+          "3021",
+          "3022",
+          "3023",
+          "4",
+          "4022",
+          "4023"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an inference about the company's strategy based on the chart, which does not require any numerical recovery or calculation.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an inference about the company's strategy based on the chart, which does not require any numerical recovery or calculation.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an inference about the company's strategy based on the chart, which does not require any numerical recovery or calculation.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for inference about the company's strategy based on the chart, which does not require specific numeric values or printed labels.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "828": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 8,
+        "non_tick_numeric": [
+          "10",
+          "12",
+          "5",
+          "6",
+          "8.88889e+18"
+        ],
+        "edge_like_numeric": [
+          "10",
+          "5"
+        ],
+        "in_plot_numeric": [
+          "10",
+          "12",
+          "5",
+          "6"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest value for the trailing margin percentage is clearly labeled as 10% on the right y-axis.",
+          "verdict": "likely_uncalibrated_axis_tick"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest value for the trailing margin percentage (orange line) appears to be around 10%, which is not directly labeled on the graph. It must be estimated by reading the height of the orange line at the peak.",
+          "verdict": "likely_uncalibrated_axis_tick"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest value for the trailing margin percentage is not directly labeled on the graph, requiring an estimate based on the plotted position.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "869": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 25,
+        "axis_ticks": 11,
+        "non_tick_numeric": [
+          "0",
+          "2",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required periods (Apr-20 to Apr-21, Oct-18 to Apr-19, Oct-21 to Apr-22, Apr-23 to Oct-23) do not have printed values directly indicating increases. Instead, the trend lines need to be visually interpreted to determine which period shows a noticeable increase.",
+          "verdict": "absent_from_image|number_present_in_options"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a noticeable increase in production, which requires reading specific points on the graph. The exact values need to be estimated from the plotted positions, as the printed values do not provide precise numerical data for each period.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a noticeable increase in production, which requires identifying specific points on the graph where the trend changes. The exact values are not printed, so these need to be estimated from the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1272": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 23,
+        "axis_ticks": 5,
+        "non_tick_numeric": [
+          "10",
+          "2",
+          "3",
+          "40",
+          "50",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "2",
+          "3",
+          "8"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The percentage values for Hu Lane's sales from China in 2019 and 2021 need to be read from the graph, as they are not directly printed as data labels.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The percentage values for Hu Lane's sales from China in 2019 and 2021 need to be read from the graph, as they are not directly printed as data labels.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact percentage values for Hu Lane's sales from China in 2019 and 2021 are not printed on the graph. They need to be estimated by reading the graph's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "-10%",
+          "reason": "The question asks for a percentage difference, which requires specific numeric values.",
+          "verdict": "only_axis_tick"
+        }
+      }
+    },
+    "1320": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 9,
+        "axis_ticks": 6,
+        "non_tick_numeric": [
+          "8.98805e+22"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The market share of Cipla in Albuterol MDI in May 2021 is not directly labeled on the graph. It must be estimated by reading the position of the red line corresponding to May-21 on the x-axis and the y-axis.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The market share of Cipla in Albuterol MDI in May 2021 is not directly labeled on the graph. It must be estimated by reading the position of the red line corresponding to May-21 on the x-axis and its height on the y-axis.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "13%",
+          "reason": "The market share of Cipla in Albuterol MDI in May 2021 is clearly labeled as 13%.",
+          "verdict": "absent_from_image"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "May-21",
+          "reason": "The question asks for a specific market share value in May 2021, which requires a numeric value.",
+          "verdict": "absent_from_image"
+        }
+      }
+    },
+    "1397": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 32,
+        "axis_ticks": 16,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "4",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "4",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing prices for the specified period need to be read from the graph, as the exact values are not printed on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing prices for the specified period need to be read from the graph, as the exact values are not printed on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing prices for each month within the specified period need to be estimated from the plotted positions on the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question requires calculating an average, which necessitates numerical values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1408": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 29,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "1",
+          "2",
+          "24",
+          "3",
+          "37.1",
+          "37.9",
+          "38.5",
+          "4",
+          "40.7",
+          "41.7",
+          "43.5",
+          "44.2"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "37.1",
+          "37.9",
+          "38.5",
+          "40.7",
+          "41.7",
+          "43.5",
+          "44.2"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The propane price and GGL input cost for 4QFY24 are both clearly printed as 43.5 and 41.7 respectively.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The propane price and GGL input cost values for 4QFY24 are directly printed as data labels on the chart.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "43.5",
+          "reason": "The propane price and GGL input cost values are directly printed on the bars.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "43.5",
+          "reason": "The question requires calculating the difference between two specific values: the propane price and the GGL input gas cost for 4QFY24.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        }
+      }
+    },
+    "1491": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 11,
+        "non_tick_numeric": [
+          "2.82829e+20"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The lowest DOI value in the chart is not directly labeled with a quarter. It must be estimated by reading the position on the y-axis.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The lowest DOI value in the chart is not directly labeled with a specific quarter. It must be estimated by reading the y-axis value corresponding to the lowest point on the red line.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The lowest DOI value in the chart appears to be around the 80 mark on the y-axis, which corresponds to the 1Q14 quarter.",
+          "verdict": "only_axis_tick|number_present_in_options"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1777": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 28,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "-2023",
+          "2",
+          "2019",
+          "2022",
+          "2023",
+          "2024",
+          "3",
+          "5",
+          "8",
+          "9"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The year with the highest gasoil inventory level in June can be determined by comparing the printed values for each year in that month.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest gasoil inventory level in June can be directly observed from the printed values on the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact inventory levels for each year in June need to be estimated by reading the graph's plotted positions, which are not directly labeled.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1810": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 35,
+        "axis_ticks": 7,
+        "non_tick_numeric": [
+          "1",
+          "18",
+          "19",
+          "2",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "3",
+          "4"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required printed values for sales exceeding 5000 INR mn are directly visible on the bar chart.",
+          "verdict": "only_axis_tick|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required sales figures for each quarter need to be estimated by reading the bar heights against the y-axis, as specific printed values for sales exceeding 5000 INR mn are not provided.",
+          "verdict": "only_axis_tick|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "No quarter has a visible printed value exceeding 5000 INR mn, so the required values need to be recovered from the plotted heights.",
+          "verdict": "only_axis_tick|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1829": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 27,
+        "axis_ticks": 14,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "16",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an interpretation of the stock price trend without requiring any specific numerical values or calculations.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an interpretation of the stock price trend without requiring any specific numerical values or calculations.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for an interpretation of the stock price trend without requiring any numerical calculations.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for an interpretation of the trend without requiring specific numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1856": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 32,
+        "axis_ticks": 17,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing price for 2023/07/01 is not directly labeled on the graph. It must be estimated by reading the position of the line corresponding to that date on the y-axis.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing price for 2023/07/01 is not directly labeled but can be estimated by reading the height of the line at that date.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required closing price for 2023/07/01 is not directly labeled on the graph. It must be estimated by reading the y-axis value corresponding to the point on the line graph for that date.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2163": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 33,
+        "axis_ticks": 20,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price on 2021/07/01 is not directly labeled, requiring an estimate based on the chart's scale. Similarly, the closing price on 2024/01/01 also needs to be estimated.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price on 2021/07/01 is not directly labeled, requiring an estimate from the graph's scale. Similarly, the closing price on 2024/01/01 also needs to be estimated.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact closing prices for 2021/07/01 and 2024/01/01 need to be estimated from the graph's scale.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a specific difference in closing prices, which requires numerical values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2200": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 25,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact P/E ratio values for January 2021 and May 2021 are not printed on the graph. The values need to be estimated by reading the graph's y-axis.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact P/E ratio values for January 2021 and May 2021 are not printed on the graph. The values need to be estimated by reading the graph's y-axis.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact P/E ratio values for January 2021 and May 2021 are not printed on the graph. The values need to be estimated by reading the graph's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question requires calculating a percentage decrease, which necessitates knowing the initial and final values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2333": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 22,
+        "axis_ticks": 5,
+        "non_tick_numeric": [
+          "-100",
+          "1.2489",
+          "1.2812",
+          "1.476",
+          "14",
+          "15.2",
+          "1999",
+          "2.5",
+          "2000",
+          "2004",
+          "2008",
+          "2012",
+          "2016",
+          "2020"
+        ],
+        "edge_like_numeric": [
+          "1.2489",
+          "1.476"
+        ],
+        "in_plot_numeric": [
+          "-100",
+          "1.2489",
+          "1.2812",
+          "1.476",
+          "14",
+          "15.2",
+          "1999",
+          "2.5",
+          "2024"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The years 2008, 2015, 2022, and 2000 are clearly labeled on the x-axis, providing the exact years for reference.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "To determine significant peaks in the GBP-USD REER chart, we need to read the y-axis values corresponding to the peaks. The exact numerical values are not printed directly on the peaks themselves, requiring an estimate based on the chart's scale.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The years showing significant peaks in the GBP-USD REER chart need to be determined by reading the plotted positions on the x-axis, which are not directly labeled with specific years.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2363": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 9,
+        "non_tick_numeric": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The value for the 'Integrated player' category in 2023 is not directly labeled on the chart. It must be estimated by reading the height of the black bar corresponding to the 'Integrated player' category and aligning it with the y-axis.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The value for the 'Integrated player' category in 2023 is not directly labeled on the bar. It must be estimated by reading the height of the black bar corresponding to the 'Integrated player' category.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The value for the 'Integrated player' category in 2023 is not directly labeled on the chart. It must be estimated by reading the height of the black bar corresponding to the 'Integrated player' category and aligning it with the y-axis.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2455": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 6,
+        "non_tick_numeric": [
+          "-25",
+          "2023",
+          "3.83338e+51",
+          "72"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-25",
+          "2023",
+          "72"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The number of BEV models for Europe in Q3 2023 is directly printed on the graph.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The number of BEV models in Europe for Q3 2023 is directly printed on the graph.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "95",
+          "reason": "The exact number '95' is printed on the bar representing Europe in Q3 2023.",
+          "verdict": "absent_from_image"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "95",
+          "reason": "The exact number for Europe in Q3 2023 is printed on the graph.",
+          "verdict": "absent_from_image"
+        }
+      }
+    },
+    "2500": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 10,
+        "axis_ticks": 8,
+        "non_tick_numeric": [
+          "3",
+          "8.88889e+08"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The sales value for March 2016 is directly labeled as 350 USD mn.",
+          "verdict": "only_axis_tick|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The sales value for T3M in March 2016 is directly labeled on the graph as approximately 350.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact sales value for March 2016 is not printed on the chart. The value must be estimated by reading the graph's y-axis.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2577": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 19,
+        "axis_ticks": 7,
+        "non_tick_numeric": [
+          "2",
+          "3",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a qualitative comparison of the rate of increase in the Theil Index for both regions over specific time periods. No numerical calculations or readings are required.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a qualitative comparison of the rate of increase for both regions without requiring specific numerical calculations or readings from the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact years where the rates of increase are similar need to be determined by comparing the slopes of the lines, which requires reading the positions on the x-axis corresponding to the points of interest.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2636": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 10,
+        "axis_ticks": 7,
+        "non_tick_numeric": [
+          "1.33189e+19"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods of stability without requiring any numerical recovery. The chart shows a general upward trend with fluctuations, but specific periods of stability can be identified visually by looking for flat sections on the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks to identify periods of stability without requiring specific numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods where the GGL CNG price was approximately stable, which requires reading specific points on the graph to determine stability.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "2886": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 5,
+        "non_tick_numeric": [
+          "-23",
+          "-24"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The peak values of the two series need to be estimated by reading the graph's y-axis values, which are not directly printed as data labels.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The peak values of the two series need to be estimated by reading the graph's y-axis, as the exact values are not printed.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The peak values of the two series need to be estimated by reading the graph, as the exact numerical values are not provided.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a specific difference between peak values, which requires numerical data.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "3232": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 27,
+        "axis_ticks": 11,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "6",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods showing clear upward trends without requiring specific numerical values or calculations. The chart provides visual information on the trend direction over time.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods showing clear upward trends, which requires identifying specific points on the graph where the trend is visually evident. The printed values do not provide these details directly.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods showing clear upward trends, which requires identifying specific points on the graph where the trend is upward. The exact values are not printed, so these need to be estimated from the plotted positions.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for periods showing upward trends, which can be visually identified on the graph without needing specific numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "3935": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 19,
+        "axis_ticks": 4,
+        "non_tick_numeric": [
+          "2",
+          "2500",
+          "3",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about a sharp increase in trade surplus after 1995. To determine which countries experienced this, we need to read the values from the chart for each country post-1995. The exact values are not printed on the chart, so we must estimate them by reading the bar heights.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about a sharp increase in trade surplus after 1995, which requires reading specific values from the chart. The exact values need to be estimated from the bar heights, as they are not directly printed on the bars.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about a sharp increase in trade surplus after 1995, which requires reading specific values from the chart. The exact values are not printed on the bars, so they need to be estimated from the chart's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "4128": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 26,
+        "axis_ticks": 9,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "18",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about specific date ranges and whether there were target price changes without corresponding recommendation changes. This requires identifying the presence or absence of target price changes within each date range, which cannot be determined from the printed values alone.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question requires identifying specific dates where target price changes occurred without a corresponding recommendation change. The necessary information is not directly provided as printed values but must be inferred by reading the positions of the triangles (target price changes) relative to the line representing closing prices and the blue dots (recommendation changes).",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about specific date ranges where target price changes occurred without recommendation changes. The chart shows two different types of markers: triangles for target price changes and circles for recommendation changes. To determine which date ranges had target price changes without recommendation changes, we need to visually inspect the chart for periods where only triangles appear. This requires reading the x-axis dates and the y-axis values, which are not directly printed as labels on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for specific date ranges with target price changes without recommendation changes, which cannot be answered using the printed labels on the graph.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "4599": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 35,
+        "axis_ticks": 20,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "27",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price of VIPSHOP stock as of 27-Feb-2024 is clearly printed as USD 16.34.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The closing price of VIPSHOP stock as of 27-Feb-2024 is directly printed on the graph.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "22.00",
+          "reason": "The closing price is clearly labeled as '22.00' on the graph.",
+          "verdict": "absent_from_image"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "22.00",
+          "reason": "The closing price of VIPSHOP stock as of 27-Feb-2024 is indicated by a printed label on the graph.",
+          "verdict": "absent_from_image"
+        }
+      }
+    },
+    "4640": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 33,
+        "axis_ticks": 19,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest and lowest points in 2023 need to be identified by reading the y-axis values from the graph, as these values are not directly printed on the graph.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest and lowest points in 2023 need to be identified by reading the y-axis values from the graph, as these values are not directly printed on the graph.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest and lowest points in 2023 need to be identified by reading the y-axis values from the graph, as these values are not directly labeled.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a specific numerical difference between the highest and lowest closing prices in 2023, which requires identifying these values.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        }
+      }
+    },
+    "4740": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 23,
+        "axis_ticks": 12,
+        "non_tick_numeric": [
+          "16",
+          "17",
+          "18",
+          "19",
+          "21",
+          "22",
+          "23"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "16",
+          "17",
+          "18",
+          "19",
+          "2",
+          "21",
+          "22",
+          "23"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required values for IPM from FY16 to FY20 need to be read from the chart's scale, as they are not directly printed as data labels.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required values for IPM from FY16 to FY20 need to be read from the chart, as they are not directly printed as data labels.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required values for each year need to be read from the chart, as they are not directly printed as data labels.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "4905": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 27,
+        "axis_ticks": 11,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "4",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required price increase values need to be read from the graph at the specified dates (2021/07/01 and 2024/01/01) and then subtracted to find the total increase.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required price increase values need to be read from the graph at the specified dates (2021/07/01 and 2024/01/01) and then subtracted to find the total increase.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact price values for 2021/07/01 and 2024/01/01 are not printed on the graph, requiring an estimate based on the plotted positions.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a total price increase over a specific time period, which requires calculating the difference between the closing prices at the start and end points. The image provides the closing price trend but does not directly provide the exact values for these dates.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5062": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 26,
+        "axis_ticks": 7,
+        "non_tick_numeric": [
+          "-2023",
+          "2",
+          "2019",
+          "2022",
+          "2023",
+          "2024",
+          "3",
+          "5",
+          "8",
+          "9"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "2",
+          "3",
+          "5",
+          "8",
+          "9"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required inventory levels for each month in the first quarter of 2023 need to be read from the graph, as the exact values are not printed.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required average inventory levels for the first quarter of 2023 need to be estimated by reading the heights of the lines corresponding to each month (January, February, March) on the graph.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required average inventory level for the first quarter of 2023 needs to be estimated by reading the plotted positions of the 2023 line for January, February, and March, and then calculating the average.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5347": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 33,
+        "axis_ticks": 19,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "18",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about observable trends in the stock price without requiring any numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for observable trends in the stock price without requiring specific numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for trends in the stock price, which can be observed qualitatively from the graph without needing specific numerical calculations.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for trends in the stock price, which can be observed visually without needing specific numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5390": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 21,
+        "axis_ticks": 8,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The stock price is not directly labeled on the graph, requiring an estimate based on the plotted positions.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about general trends and behaviors of Q Technology's stock price without requiring specific numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about qualitative observations of Q Technology's stock behavior, which do not require numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for general observations about the stock behavior without requiring specific numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5422": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 27,
+        "axis_ticks": 13,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "6",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The chart includes printed labels for 'Closing Price', 'Target Price Change', and 'Recommendation Changes'. The question asks about specific data points that are visible on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All data points and their corresponding values are printed as labels on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about specific data points visible on the chart, which does not require numerical recovery or arithmetic operations.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for specific data points that can be seen on the chart, which does not require any numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5598": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 25,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "-2024",
+          "1",
+          "13",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "7"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The starting and ending stock prices need to be read from the graph, which are not directly printed as values on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The starting and ending stock prices need to be read from the graph, which are not directly printed as values on the chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact stock price values for 2021/07/01 and 2024/01/01 are not printed on the graph. The user needs to read these values from the y-axis.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a total increase in stock price over a specific period, which requires calculating the difference between the closing prices at the start and end of the period.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "0": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 13,
+        "axis_ticks": 5,
+        "non_tick_numeric": [
+          "4",
+          "8.83889e+33"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a qualitative assessment of sales trends without requiring specific numerical calculations.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for specific quarters that show a significant upward trend. The trend lines are not labeled with values, so the exact points where the trend changes direction need to be estimated by reading the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a significant upward sales trend, which requires identifying specific quarters where the sales have increased. The exact values are not printed on the bars, so we need to estimate the sales figures by reading the heights of the bars against the y-axis.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "1": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 21,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "1",
+          "1009",
+          "2",
+          "2096",
+          "3",
+          "4096",
+          "60",
+          "8",
+          "8096",
+          "9"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for the largest expenditure component without requiring any numerical calculations or readings.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for the largest expenditure component without requiring any numerical recovery or calculation. The chart provides visual information that can be interpreted qualitatively to determine which component is the largest.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for the largest expenditure component without requiring any numerical calculation or reading.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "6": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 34,
+        "axis_ticks": 14,
+        "non_tick_numeric": [
+          "15.5",
+          "16.5",
+          "17.1",
+          "17.2",
+          "18.9",
+          "19",
+          "19.3",
+          "199",
+          "21",
+          "23",
+          "24",
+          "25",
+          "26"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "15.5",
+          "16.5",
+          "17.1",
+          "17.2",
+          "18.9",
+          "19.3",
+          "199",
+          "20"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the required values for the options are directly printed on the chart, making them easily accessible without needing to read coordinates.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All necessary values for FY24F and FY25F are directly printed as data labels on the chart.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "19%",
+          "reason": "The percentage value '19%' is directly printed on the FY26E bar, which represents the overheads as a % of sales.",
+          "verdict": "number_exists_in_chart_text|not_in_plot"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "7": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 129,
+        "axis_ticks": 28,
+        "non_tick_numeric": [
+          "-1",
+          "-3",
+          "1",
+          "11",
+          "11.41",
+          "18",
+          "2223",
+          "23",
+          "28",
+          "3",
+          "33",
+          "44",
+          "7",
+          "74"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-1",
+          "-10",
+          "-2",
+          "-3",
+          "-4",
+          "-5",
+          "0",
+          "1",
+          "11",
+          "11.41",
+          "2",
+          "4",
+          "44",
+          "8"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The YTD performance values for the sectors are clearly printed as data labels on the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The YTD performance values for the sectors are clearly printed as data labels on the graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "11",
+          "reason": "The YTD performance value for CH Software/Svcs is printed as 11, which is greater than 5.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "CH Software/Svcs",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "8": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 26,
+        "axis_ticks": 3,
+        "non_tick_numeric": [
+          "10",
+          "1830",
+          "1985",
+          "1995",
+          "2",
+          "2005",
+          "2010",
+          "2015",
+          "2020",
+          "2025",
+          "2800",
+          "50",
+          "62",
+          "75"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "2",
+          "75"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about the meaning of the shaded area in the chart, which is a qualitative description rather than a numerical calculation.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about the meaning of the shaded area without requiring any numerical recovery.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for the meaning of the shaded area without requiring any numerical recovery.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": true,
+          "printed_label_text": "Range of select economies",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "11": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 46,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "109",
+          "129",
+          "20",
+          "3",
+          "4045",
+          "6",
+          "696",
+          "8",
+          "89",
+          "96"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The tax rates for each state are clearly labeled on the bar graph.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest tax rate for base sales tax is directly labeled as 'Louisiana' with a value of approximately 10%.",
+          "verdict": "absent_from_image"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "10%",
+          "reason": "The highest tax rate for base sales tax is indicated by the longest bar, which corresponds to Louisiana with a tax rate of 10%.",
+          "verdict": "absent_from_image"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "12": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 44,
+        "axis_ticks": 17,
+        "non_tick_numeric": [
+          "1",
+          "137.1",
+          "22",
+          "23",
+          "24",
+          "265",
+          "29",
+          "3",
+          "30",
+          "31",
+          "4",
+          "47",
+          "8",
+          "84"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "1",
+          "137.1",
+          "20",
+          "23",
+          "265",
+          "29",
+          "3",
+          "30",
+          "31",
+          "4",
+          "47",
+          "8",
+          "84"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest y-y growth percentage is clearly labeled as '137.1%' for the 1Q FY23.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_options"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest y-y growth percentage is directly labeled on the graph as 137.1%.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "137.1%",
+          "reason": "The highest y-y growth percentage is clearly labeled on the 1Q FY23 bar.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "137.1%",
+          "reason": "The highest y-y growth is indicated by the peak on the line graph.",
+          "verdict": "number_exists_in_chart_text|located_in_plot"
+        }
+      }
+    },
+    "13": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 24,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "1",
+          "100",
+          "102.5",
+          "105",
+          "107.5",
+          "2",
+          "3.5",
+          "3.75",
+          "4.25",
+          "92.5",
+          "95",
+          "97.5"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for a qualitative observation of the upward trend in the stock price of AMMB Holdings. The options provided are specific time periods, and the answer can be determined by visually inspecting the graph for each period.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The stock price (red line) shows an upward trend from March 2023 to February 2024, which requires reading the exact values from the graph.",
+          "verdict": "absent_from_image|number_present_in_options"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for periods showing an upward trend in the stock price, which requires reading specific points on the graph. The exact values are not printed, so we need to estimate them based on the graph's scale.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "5": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 18,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "-10",
+          "-2",
+          "1",
+          "10.9",
+          "11",
+          "12.5",
+          "14.8",
+          "16.7",
+          "2",
+          "23.1",
+          "23.4",
+          "24",
+          "27.7",
+          "29.7"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the required percentages for each origination range in 1Q24 are printed as data labels.",
+          "verdict": "number_exists_in_chart_text|number_present_in_options|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the percentages for each origination range in 1Q24 are clearly printed as data labels.",
+          "verdict": "number_exists_in_chart_text|number_present_in_options|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "27.7%",
+          "reason": "",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "9": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 18,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "13.24",
+          "13.52",
+          "17.82",
+          "2.41",
+          "3.28",
+          "33.65",
+          "4.39",
+          "5.27",
+          "6.43"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The percentages for each segment are clearly printed as data labels, allowing for direct comparison.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All percentages needed for the calculation are directly printed as data labels on the pie chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "33.65%",
+          "reason": "The percentage for Government is clearly printed as 33.65%. Similarly, the percentage for Military is also printed as 17.82%. These percentages can be directly used to determine the highest total contribution when combined.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "Government",
+          "reason": "The question asks for the highest total contribution, which requires specific numeric values.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "10": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 14,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "2.28222e+23",
+          "22",
+          "47",
+          "78"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "47",
+          "78"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about the aspects of a country's demographics that a dependency ratio informs, which can be answered through qualitative analysis of the chart and the definition of a dependency ratio.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about the aspects of a country's demographics that a dependency ratio informs, which is a qualitative inquiry into the meaning and implications of the data presented rather than a need for numerical recovery.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about the demographic aspects informed by a dependency ratio, which is a qualitative concept rather than requiring numerical recovery.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "20": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 33,
+        "axis_ticks": 6,
+        "non_tick_numeric": [
+          "-0.5",
+          "-19",
+          "-2.09",
+          "-296",
+          "-396",
+          "-4",
+          "-4.396",
+          "-59",
+          "0.5",
+          "1.19",
+          "1.306",
+          "106",
+          "2.09",
+          "2024"
+        ],
+        "edge_like_numeric": [
+          "-4.396",
+          "3"
+        ],
+        "in_plot_numeric": [
+          "-0.5",
+          "-2.09",
+          "-4.396",
+          "0",
+          "0.5",
+          "1.19",
+          "1.306",
+          "2.09",
+          "24",
+          "2590",
+          "3",
+          "4.396",
+          "79"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The growth percentages for each region are clearly printed as data labels on the bar chart.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The growth percentages for China (4.2%), LATAM (3.0%), North America (2.3%), Europe (2.4%), and Japan/Korea (1.3%) are all printed as data labels on the bar chart.",
+          "verdict": "only_axis_tick"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "4.2%",
+          "reason": "The growth percentage for China (4.2%) is higher than the S&P Global forecast (3.0%) as indicated by the printed values.",
+          "verdict": "absent_from_image"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "China",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "21": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 16,
+        "axis_ticks": 6,
+        "non_tick_numeric": [
+          "2",
+          "2017",
+          "8"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "2",
+          "2017",
+          "8"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required number is not printed directly on the graph. It must be estimated by reading the position of the data points on the x-axis, which represents 'Days from election day'. The specific value of 50 days before the election is not labeled but can be inferred from the graph's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required number (50 days) is not printed at its target and must be recovered from a plotted position on the x-axis using the chart's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required number (50) is not printed on the x-axis, so it must be estimated from the chart's scale.",
+          "verdict": "absent_from_image|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for possible reasons for a decline in the 2-year yield spread around 50 days before the election, which is a qualitative analysis rather than a quantitative one.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        }
+      }
+    },
+    "22": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 111,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "-0.1",
+          "-10",
+          "-18",
+          "-2024",
+          "0",
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6",
+          "0.7",
+          "12",
+          "12.3"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The forecasted CPI values for February m/m on 12-Mar-2024 are printed in the 'Forecast' column for Germany, US, and Spain.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The forecasted CPI values for February m/m on 12-Mar-2024 are printed in the 'Forecast' column for Germany and Spain.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "0.6% (p)",
+          "reason": "The forecasted CPI value for Germany's harmonised CPI for February month-over-month is printed as 0.6% (p).",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "brief",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "23": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 29,
+        "axis_ticks": 14,
+        "non_tick_numeric": [
+          "-21",
+          "-22",
+          "-23",
+          "-24",
+          "-25",
+          "-5",
+          "11.88",
+          "3"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-22",
+          "-23",
+          "-24",
+          "-25",
+          "11.88",
+          "12"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The chart shows trends in EUR HY yield and total return over time, but it does not provide specific numerical data or labels that directly link these trends to economic conditions, inflation rates, credit spreads, or stock market performance. The question asks for factors influencing the yields and returns, which implies a need for qualitative reasoning about the relationships between financial markets and broader economic indicators.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about factors influencing the EUR HY yield and total return, which do not require numerical recovery from the chart. The chart provides visual trends and labels, but no specific factors are listed.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about factors influencing the EUR HY yield and total return, which requires understanding the context and trends rather than specific numerical values.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks for factors influencing yields and returns, which cannot be answered with specific numeric values from the image.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "24": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 23,
+        "axis_ticks": 11,
+        "non_tick_numeric": [
+          "-3",
+          "2.38",
+          "23",
+          "24",
+          "3.77",
+          "3.9",
+          "3.97",
+          "4.71"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "-3",
+          "2.38",
+          "3.77",
+          "3.9",
+          "3.97",
+          "4.71"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about factors contributing to improved Gross Stage-3 percentages, which is a qualitative analysis rather than a numerical calculation.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The question asks about factors contributing to the improvement in Gross Stage-3 percentages, which cannot be answered through arithmetic operations alone. The chart provides historical data but does not provide qualitative information about the factors influencing the changes.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The Gross Stage-3 percentages for each period are not directly labeled on the bars, requiring an estimate based on the chart's scale.",
+          "verdict": "number_exists_in_chart_text|located_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "qualitative",
+          "needs_geometry": false,
+          "requires_numeric_value": false,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "4": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 15,
+        "axis_ticks": 0,
+        "non_tick_numeric": [],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required percentages for Customer Experience and Legal services need to be estimated from the bar heights, which are not directly labeled with specific values.",
+          "verdict": "no_number_claimed|chart_has_no_non_tick_number"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The required percentages for Customer Experience and Legal services need to be estimated from the bar heights, which are not directly labeled with specific values.",
+          "verdict": "no_number_claimed|chart_has_no_non_tick_number"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact percentages for Customer Experience and Legal services are not printed on the chart. The heights of the bars need to be estimated to determine the difference.",
+          "verdict": "no_number_claimed|chart_has_no_non_tick_number"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": true,
+          "target_has_printed_label": false,
+          "printed_label_text": "",
+          "reason": "The question asks for a percentage difference, which requires numerical values.",
+          "verdict": "no_number_claimed|chart_has_no_non_tick_number"
+        }
+      }
+    },
+    "42": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 20,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "1",
+          "3",
+          "7000",
+          "9500"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point reached by the Jakarta Stock Exchange Composite Index is clearly labeled as 105 on the secondary y-axis.",
+          "verdict": "only_axis_tick"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point reached by the Jakarta Stock Exchange Composite Index is clearly labeled as 105 on the secondary y-axis.",
+          "verdict": "only_axis_tick"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The highest point reached by the Jakarta Stock Exchange Composite Index is not directly labeled on the graph. It must be estimated from the plotted position and the scale.",
+          "verdict": "no_number_claimed"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "105",
+          "reason": "The highest point reached by the Jakarta Stock Exchange Composite Index is indicated by the topmost point on the gray line, which corresponds to the printed label '105'.",
+          "verdict": "only_axis_tick"
+        }
+      }
+    },
+    "56": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 31,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "0",
+          "1",
+          "2",
+          "2022",
+          "2023",
+          "2024",
+          "2026",
+          "2027",
+          "2028",
+          "23",
+          "3",
+          "4",
+          "5",
+          "520"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact revenue values for 'Large Enterprises' and 'Rest of Enterprise' in 2028 are not directly printed on the chart. The values need to be estimated by reading the heights of the corresponding segments.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The revenue for 'Large Enterprises' in 2028 is approximately $5 billion, while the revenue for 'Rest of Enterprise' is around $1 billion. Both values need to be estimated from the chart's scale.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact revenue values for 'Large Enterprises' and 'Rest of Enterprise' in 2028 are not printed on the chart. The values need to be estimated by reading the heights of the corresponding segments.",
+          "verdict": "number_exists_in_chart_text|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "Revenue in Billions ($)",
+          "reason": "The question asks for a specific numerical difference in revenue between two categories in a specific year.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "77": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 20,
+        "axis_ticks": 10,
+        "non_tick_numeric": [
+          "-2",
+          "-3",
+          "-4",
+          "-5",
+          "100",
+          "250",
+          "5.125e+10",
+          "5.45e+07",
+          "500",
+          "51",
+          "52",
+          "54",
+          "540",
+          "540000"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": [
+          "0",
+          "100",
+          "250",
+          "5.125e+10",
+          "5.45e+07",
+          "500",
+          "51",
+          "52",
+          "54",
+          "540",
+          "540000"
+        ]
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the training costs for ChatGPT-2, ChatGPT-3, and ChatGPT-4 are directly printed as data labels on the bar chart.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "All the training costs for ChatGPT-2, ChatGPT-3, and ChatGPT-4 are directly printed as data labels on the bar chart.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "$40,000",
+          "reason": "The training cost for ChatGPT-2 is clearly printed as $40,000.",
+          "verdict": "only_axis_tick"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "$40,000",
+          "reason": "The question requires the sum of the training costs for ChatGPT-2, ChatGPT-3, and ChatGPT-4, which are all provided as printed labels.",
+          "verdict": "only_axis_tick"
+        }
+      }
+    },
+    "114": {
+      "chart": {
+        "chart_status": "success",
+        "status_reason": null,
+        "calibrated": true,
+        "tokens": 26,
+        "axis_ticks": 15,
+        "non_tick_numeric": [
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact values for 2015 and 2023 need to be read from the graph, as they are not directly labeled.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c1_blind_production": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact values for 2015 and 2023 on the 'Auto connector content value per vehicle (USD)' line need to be read from the graph, as they are not directly printed.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "coordinate_reading",
+          "needs_geometry": true,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The exact values for 2015 and 2023 are not printed on the graph, requiring an estimate based on the plotted positions.",
+          "verdict": "number_exists_in_chart_text|not_in_plot|number_present_in_question"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "Auto connector content value per vehicle (USD)",
+          "reason": "The question asks for the increase in auto connector content value over a specific period, which requires a numeric value.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    },
+    "118": {
+      "chart": {
+        "chart_status": "capability_failure",
+        "status_reason": "linear_left_axis_unrecovered_or_nonlinear",
+        "calibrated": false,
+        "tokens": 117,
+        "axis_ticks": 0,
+        "non_tick_numeric": [
+          "0",
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.5",
+          "0.6",
+          "0.8",
+          "0.9",
+          "1",
+          "1.3",
+          "1.8",
+          "10",
+          "10.5",
+          "100"
+        ],
+        "edge_like_numeric": [],
+        "in_plot_numeric": []
+      },
+      "conditions": {
+        "c0_options_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The total HSBC weight for all countries listed in the FTSE Russell EM Asia region can be found by summing up the percentages provided in the 'HSBC weight (%)' column for each country in that region.",
+          "verdict": "no_number_claimed"
+        },
+        "c1_blind_production": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "",
+          "reason": "The total HSBC weight for all countries listed in the FTSE Russell EM Asia region can be found by summing up the percentages provided in the 'HSBC weight (%)' column for each country in that region.",
+          "verdict": "no_number_claimed"
+        },
+        "c2_blind_quote": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": null,
+          "target_has_printed_label": null,
+          "printed_label_text": "70.7",
+          "reason": "The total HSBC weight for all countries listed in the FTSE Russell EM Asia region is directly printed as 70.7%.",
+          "verdict": "number_exists_in_chart_text"
+        },
+        "c3_blind_two_stage": {
+          "evidence_source": "printed_values",
+          "needs_geometry": false,
+          "requires_numeric_value": true,
+          "target_has_printed_label": true,
+          "printed_label_text": "HSBC weight (%)",
+          "reason": "The question asks for the total HSBC weight, which requires summing up the percentages listed under the 'HSBC weight (%)' column for all countries in the FTSE Russell EM Asia region.",
+          "verdict": "no_number_claimed"
+        }
+      }
+    }
+  },
+  "conditions_order": [
+    "c0_options_production",
+    "c1_blind_production",
+    "c2_blind_quote",
+    "c3_blind_two_stage"
+  ],
+  "audited_alignment": {
+    "c0_options_production": {
+      "matched": 0,
+      "total": 6,
+      "mismatch": [
+        {
+          "sample_id": "43",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "18",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "11095",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "828",
+          "expected": "qualitative",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "1960",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        },
+        {
+          "sample_id": "1491",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        }
+      ]
+    },
+    "c1_blind_production": {
+      "matched": 0,
+      "total": 6,
+      "mismatch": [
+        {
+          "sample_id": "43",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "18",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "11095",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "828",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        },
+        {
+          "sample_id": "1960",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        },
+        {
+          "sample_id": "1491",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        }
+      ]
+    },
+    "c2_blind_quote": {
+      "matched": 1,
+      "total": 6,
+      "mismatch": [
+        {
+          "sample_id": "43",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "11095",
+          "expected": "coordinate_reading",
+          "got": "printed_values"
+        },
+        {
+          "sample_id": "828",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        },
+        {
+          "sample_id": "1960",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        },
+        {
+          "sample_id": "1491",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        }
+      ]
+    },
+    "c3_blind_two_stage": {
+      "matched": 5,
+      "total": 6,
+      "mismatch": [
+        {
+          "sample_id": "828",
+          "expected": "qualitative",
+          "got": "coordinate_reading"
+        }
+      ]
+    }
+  },
+  "audited_expected": {
+    "43": "coordinate_reading",
+    "18": "coordinate_reading",
+    "11095": "coordinate_reading",
+    "828": "qualitative",
+    "1960": "qualitative",
+    "1491": "qualitative"
+  },
+  "chart_status": {
+    "capability_failure": 11,
+    "success": 53
+  }
+}

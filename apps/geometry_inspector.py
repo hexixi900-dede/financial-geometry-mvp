@@ -87,7 +87,7 @@ active = document(runs_root/'current_run.json')
 next_run = document(runs_root/'next_run.json')
 runs.sort(key=lambda p: (str(p)==active.get('root'), document(p/'release_manifest.json').get('prepared_at',p.stat().st_mtime)), reverse=True)
 if not runs: st.info('暂无可浏览的实验'); st.stop()
-labels = {'question_router_v4':'题目级分流 v4 · 恢复遮挡后的折线片段', 'question_router_v3':'题目级分流 v3 · 证据来源与日期图例修复', 'question_router_v2':'题目级分流 v2 · 修正判断与计划提示', 'question_router_v1':'题目级分流 v1 · 独立判断＋模块化测量', 'visual_feedback_v2':'v2 · 保留失败回退规则', 'visual_feedback_v3':'v3 · 进入 Geometry 后不回填 Raw', 'visual_feedback_v4':'v4 · 修复嵌套计划读取', 'visual_feedback_v1':'视觉反馈初版', 'matched_input_v1':'输入对齐版', 'unified':'旧版'}
+labels = {'question_router_v11':'题目级分流 v11 · 把图上文本给计划层', 'question_router_v10':'题目级分流 v10 · evidence 单值映射', 'question_router_v9':'题目级分流 v9 · 端点最近列回退', 'question_router_v8':'题目级分流 v8 · 日期锚点＋极值全序列＋轴带重读', 'question_router_v7':'题目级分流 v7 · 不给未采信的选项＋计划部分接受', 'question_router_v6':'题目级分流 v6 · 计划修复重试＋选项映射', 'question_router_v5':'题目级分流 v5 · 两阶段判断＋印刷标签核实闸门', 'question_router_v4':'题目级分流 v4 · 恢复遮挡后的折线片段', 'question_router_v3':'题目级分流 v3 · 证据来源与日期图例修复', 'question_router_v2':'题目级分流 v2 · 修正判断与计划提示', 'question_router_v1':'题目级分流 v1 · 独立判断＋模块化测量', 'visual_feedback_v2':'v2 · 保留失败回退规则', 'visual_feedback_v3':'v3 · 进入 Geometry 后不回填 Raw', 'visual_feedback_v4':'v4 · 修复嵌套计划读取', 'visual_feedback_v1':'视觉反馈初版', 'matched_input_v1':'输入对齐版', 'unified':'旧版'}
 def run_label(p):
     state=(p/'status.txt').read_text().strip() if (p/'status.txt').exists() else ''
     q=document(p/'queue_status.json')
@@ -108,7 +108,8 @@ st.sidebar.caption('运行状态：' + runtime_state(state))
 if st.sidebar.button('刷新结果'): st.cache_data.clear(); st.rerun()
 # Full inputs are visible immediately. Pilot results overlay them until the cohort is merged.
 names = ['geometry_inputs','plans','measurements','measurements_initial','feedback_initial',
-         'revision_plans','measurements_revision','feedback_final','replies','gold','routers','outcomes']
+         'revision_plans','measurements_revision','feedback_final','replies','gold','routers','outcomes',
+         'routers_model','chart_text','chart_text_candidates']
 logs = {name: {**read(run/'pilot'/(name+'.jsonl')), **read(run/'full'/(name+'.jsonl'))} for name in names}
 sources, plans, measurements, replies = (logs[n] for n in ['geometry_inputs','plans','measurements','replies'])
 raw_path=Path(protocol.get('raw_predictions','/data/liu_jun/finmme_reproduction/outputs/predictions/qwen25vl7b_direct_full.jsonl'))
@@ -120,6 +121,50 @@ summary = document(run/'full/summary.json')
 if question_router:
     pilot_summary=document(run/'pilot/summary.json')
     if pilot_summary.get('completed',0)>summary.get('completed',0):summary=pilot_summary
+# Independent diagnostic. Never part of the frozen release or the official score.
+attribution = document(ROOT/'phase9_diagnostics/router_attribution_20260915/attribution.json')
+ATTRIBUTION_LABELS = {
+    'c0_options_production': 'c0 基线：选项可见＋生产提示词',
+    'c1_blind_production': 'c1 屏蔽选项',
+    'c2_blind_quote': 'c2 屏蔽选项＋举证要求',
+    'c3_blind_two_stage': 'c3 屏蔽选项＋两问式拆分',
+}
+VERDICT_LABELS = {
+    'absent_from_image': '引用的数字整张图里都不存在',
+    'only_axis_tick': '引用的数字只是轴刻度',
+    'likely_uncalibrated_axis_tick': '引用的数字疑似未标定的轴刻度',
+    'number_exists_in_chart_text': '图中确有该数字',
+    'located_in_plot': '位于绘图区内',
+    'not_in_plot': '不在绘图区内',
+    'number_present_in_options': '该数字出现在选项里',
+    'number_present_in_question': '该数字出现在题干里',
+    'chart_has_no_non_tick_number': '整张图没有任何非轴刻度数字',
+    'no_number_claimed': '未引用具体数字',
+    'no_inventory': '缺少文本清单',
+}
+def verdict_text(verdict):
+    parts = [p for p in str(verdict or '').split('|') if p]
+    return '；'.join(VERDICT_LABELS.get(p, p) for p in parts) or '—'
+def geo_entries(entry):
+    needs = (entry or {}).get('needs_geometry') or {}
+    for key in ('true', 'True', True):
+        if key in needs: return needs[key]
+    return 0
+def recorded_evidence(reply):
+    """Recover the evidence block the answer stage actually sent, from its prompt."""
+    prompt = (reply or {}).get('prompt') or ''
+    head = prompt.split('\n\nActual input:\n', 1)[0]
+    if 'Actual Geometry evidence:\n' not in head: return {}
+    try: return json.loads(head.split('Actual Geometry evidence:\n', 1)[1])
+    except ValueError: return {}
+def option_mapping_rows(block):
+    mapping = (block or {}).get('answer_options')
+    if not mapping: return None
+    rows = [{'选项': row.get('option'), '选项文本': row.get('text'),
+             '选项数值': row.get('value'),
+             '与测量值之差': row.get('absolute_difference', '—（未给出）')}
+            for row in mapping.get('options') or []]
+    return mapping, rows
 def sample_state(sid):
     if not question_router:
         return route_state(plans.get(sid,{}), measurements.get(sid, logs['measurements_initial'].get(sid,{})),
@@ -149,6 +194,30 @@ with st.expander('全量 FinMME 结果与本轮覆盖', expanded=False):
     else: st.info('新版尚未形成评分结果；上一轮完整结果可在左侧切换查看。')
     counts = Counter(sample_state(s) for s in sources)
     st.dataframe([{'状态': k, '题数': v} for k,v in counts.items()], hide_index=True)
+if attribution:
+    with st.expander('Router 归因实验（独立诊断，不进入实验评分）', expanded=False):
+        st.caption('对同一批题目复跑四组条件并逐项消融。c0 用于校验装置能否复现冻结版本；'
+                   'printed_values 是否成立由图表 OCR 文本与项目自身的轴刻度标定判定，'
+                   '不使用 Gold，也不做人工逐题覆写。')
+        fidelity = attribution.get('fidelity') or {}
+        total = fidelity.get('matched', 0) + len(fidelity.get('mismatched') or [])
+        if total:
+            st.write(f"装置保真度：c0 与冻结版本的三分类一致 {fidelity.get('matched', 0)}/{total} 题")
+        order = attribution.get('conditions_order') or []
+        attribution_summary = attribution.get('summary') or {}
+        st.dataframe([{
+            '条件': ATTRIBUTION_LABELS.get(name, name),
+            'printed_values': (attribution_summary.get(name, {}).get('evidence_source') or {}).get('printed_values', 0),
+            'coordinate_reading': (attribution_summary.get(name, {}).get('evidence_source') or {}).get('coordinate_reading', 0),
+            'qualitative': (attribution_summary.get(name, {}).get('evidence_source') or {}).get('qualitative', 0),
+            '进入 Geometry': geo_entries(attribution_summary.get(name, {})),
+            '无法被图中文本支持的 printed_values': len(attribution_summary.get(name, {}).get('unsupported_printed_claims') or []),
+        } for name in order], hide_index=True)
+        for name in order:
+            unsupported = attribution_summary.get(name, {}).get('unsupported_printed_claims') or []
+            if unsupported:
+                st.caption(ATTRIBUTION_LABELS.get(name, name) + ' 中无法核实的是：' + '、'.join('Q' + x for x in unsupported))
+        st.caption('这是一次性诊断，不改变任何冻结版本，也不改变官方评分。')
 priority = [s for s in ['43','18','124','11095','7738'] if s in sources]
 search = st.sidebar.text_input('搜索题号／题目')
 kind = st.sidebar.selectbox('题型', ['全部','single_choice','multiple_choice','numerical'],
@@ -191,11 +260,73 @@ with right:
         if decision:
             st.write(decision.get('reason') or decision.get('status'))
             st.json({k:decision.get(k) for k in ['evidence_source','needs_geometry','status']},expanded=True)
+            if decision.get('model_evidence_source') is not None or decision.get('gate_verdict'):
+                model_source = decision.get('model_evidence_source')
+                final_source = decision.get('evidence_source')
+                if decision.get('gate_overrode'):
+                    st.warning(f"核实闸门改判：模型判断 {model_source} → 最终 {final_source}。{decision.get('gate_reason','')}")
+                elif decision.get('gate_verdict'):
+                    st.caption(f"核实闸门未改判（{decision.get('gate_verdict')}）：{decision.get('gate_reason','')}")
+                if decision.get('printed_label_text'):
+                    st.caption('模型声称的印刷标签原文：' + str(decision['printed_label_text']))
+                if decision.get('answer_kind'):
+                    st.caption(f"两阶段判断：答案类型 {decision.get('answer_kind')}"
+                               + f"，题干已给数字 {decision.get('numbers_stated_in_question')}"
+                               + f"，目标有印刷标签 {decision.get('printed_at_mark')}")
+            inventory_record = logs.get('chart_text', {}).get(sid)
+            if inventory_record:
+                st.caption('图表 OCR 文本清单：非轴刻度数字 ' + str(inventory_record.get('non_tick_numbers') or '无')
+                           + '；疑似未标定轴刻度 ' + str(inventory_record.get('edge_like_numbers') or '无')
+                           + '；轴刻度 ' + str(inventory_record.get('tick_numbers') or '无'))
         else: st.caption('等待独立判断；尚未调用 Planner。')
+        attribution_case = (attribution.get('per_sample') or {}).get(sid) if attribution else None
+        if attribution_case:
+            st.caption('归因实验下该题的四组条件（独立诊断，不参与评分）')
+            st.dataframe([{
+                '条件': ATTRIBUTION_LABELS.get(name, name),
+                '三分类': value.get('evidence_source'),
+                '要求数值': value.get('requires_numeric_value'),
+                '目标有印刷标签': value.get('target_has_printed_label'),
+                '引用的标签原文': value.get('printed_label_text') or '—',
+                '核实结果': verdict_text(value.get('verdict')),
+            } for name, value in (attribution_case.get('conditions') or {}).items()], hide_index=True)
+            chart_facts = attribution_case.get('chart') or {}
+            st.caption('图表文本清单（OCR）：非轴刻度数字 '
+                       + str(chart_facts.get('non_tick_numeric') or '无')
+                       + '；疑似未标定轴刻度 ' + str(chart_facts.get('edge_like_numeric') or '无')
+                       + '；绘图区内数字 ' + str(chart_facts.get('in_plot_numeric') or '无'))
     st.subheader('VLM 看图后的测量计划')
-    if plan: st.json(plan, expanded=True)
+    plan_record = logs['plans'].get(sid, {})
+    chart_text = logs.get('chart_text_candidates', {}).get(sid, {})
+    if chart_text:
+        with st.expander('计划层实际看到的图上文本（v11 起才提供给模型）'):
+            st.caption('这三组是 CPU 从图上读出来的，计划模型据此选择要测的系列与类别；'
+                       '路由判定看不到它们。三组不互斥——没有真图例的图会把类别名印在图例位置。')
+            st.dataframe([{'分组': k, '内容': ' ｜ '.join(chart_text.get(k) or []) or '（空）'}
+                          for k in ('x_labels', 'legend_series', 'other_text')], hide_index=True)
+    if plan:
+        if plan_record.get('plan_origin') == 'salvaged':
+            st.warning(f"计划是**部分接受**的：算术部分不合契约，已丢弃（{plan_record.get('salvage_note') or '未知'}），"
+                       f"保留可测量的目标并改为 operation=evidence。目标校验没有被放宽。")
+        if any(t.get('measurement') == 'sequence' and not str(t.get('x_label') or '').strip()
+               for t in plan.get('targets') or []):
+            st.info('**极值目标改为全序列扫描**：问「最高/最低点」不是读某一个横坐标上的柱子，'
+                    '计划里那个具体位置已丢弃，改为扫描整个绘图区的折线像素再取极值。')
+        st.json(plan, expanded=True)
     else: st.info('Router 将本题分到 Raw，因此没有生成测量计划；不代表这一判断正确。' if question_router and logs['routers'].get(sid,{}).get('needs_geometry') is False else '尚未生成有效测量计划。')
+    if not plan and plan_record.get('error'):
+        st.caption('计划被拒原因：' + str(plan_record.get('error')))
     st.subheader('测量与 Python 计算')
+    if m.get('x_axis_repair'):
+        st.info(f"x 轴锚点不足，已用**轴带重读**补回：{m.get('x_axis_repair')}")
+    fallbacks = [t for t in (m.get('target_audit') or [])
+                 if isinstance(t, dict) and t.get('locator_fallback')]
+    if fallbacks:
+        offsets = '、'.join(
+            f"{t.get('x_label') or '?'} {float(t.get('locator_fallback_offset_pixels') or 0):+.0f}px"
+            for t in fallbacks)
+        st.info(f"**目标刻度处没有可用拟合，已回退到最近的采样列**（{offsets}）。"
+                f"该点取自刻度旁边的真实像素列，不代表正好落在刻度上。")
     values = m.get('geometry_values', [])
     if values:
         st.dataframe([dict(target=t.get('x_label'), series=t.get('series'),
@@ -207,6 +338,23 @@ with right:
     if reply:
         st.code(reply.get('raw_reply',''), language=None)
         if reply.get('error'): st.caption(reply['error'])
+        mapping_and_rows = option_mapping_rows(recorded_evidence(reply))
+        if mapping_and_rows:
+            mapping, rows = mapping_and_rows
+            if mapping.get('unambiguous'):
+                margin = mapping.get('margin_over_local_spacing')
+                st.success(f"Python 选项映射（已给出结论）：测量值 {mapping.get('measured_value')} → 最近选项 "
+                           f"**{mapping.get('nearest_option')}**"
+                           + (f"（余量指数 {margin:.2f}）" if isinstance(margin,(int,float)) else ""))
+            elif 'nearest_option' in mapping:
+                st.warning("Python 选项映射：本题来自 v6，给出了最近选项 "
+                           f"{mapping.get('nearest_option')} 但同时标记为不可判定。"
+                           "该写法已被 v7 取代——不可判定时不再输出任何选项。")
+            else:
+                st.info(f"Python 选项映射（不给结论）：测量值 {mapping.get('measured_value')}。"
+                        "测量值与选项间距太近，无法区分选项，因此这里不给出任何选项，"
+                        "改由模型看原图与测量值判断。")
+            st.dataframe(rows, hide_index=True)
     else: st.caption('本题已由独立判断选择 Raw 直答。' if question_router and logs['outcomes'].get(sid,{}).get('route')=='raw' else '后端尚未完成，本题还没有新版最终答案。')
     raw_answer = raw.get(sid,{}).get('prediction','缓存缺失')
     st.write('Raw VLM 原始预测：', raw_answer)
